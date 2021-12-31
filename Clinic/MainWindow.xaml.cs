@@ -33,5 +33,10 @@ namespace Clinic
         {
             DragMove();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new Clerk().Show();
+        }
     }
 }

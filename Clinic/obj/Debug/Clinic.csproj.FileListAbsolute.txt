@@ -22,3 +22,9 @@ D:\wpf\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CopyComplete
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\Clinic.exe
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\Clinic.pdb
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\Clerk.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\Clerk.baml
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignColors.dll
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.xml
