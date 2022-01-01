@@ -70,18 +70,10 @@
                                    Margin="-92,0,0,0" Foreground="White"
                                    FontFamily="IRANSans"
                                    FontSize="15" Opacity="0.5"
+                                   Style="{StaticResource textforTextBoxplaceHolder}"
                                    >
                             
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, ElementName=UserNameTxt}" Value="">
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
+                            
                         </TextBlock>
                     </Grid>
                     <iconPacks:PackIconMaterial Kind="Account" 

@@ -28,3 +28,6 @@ D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignColors.dll
 D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.dll
 D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlRegister.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlRegister.baml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\RegistrationFormTheme.baml

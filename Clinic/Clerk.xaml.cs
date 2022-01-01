@@ -25,11 +25,9 @@ namespace Clinic
         public Clerk()
         {
             InitializeComponent();
-            var menuRegister = new List<SubItem>();
-            menuRegister.Add(new SubItem("Employees"));
-            menuRegister.Add(new SubItem("Products"));
-            var item6 = new ItemMenu("Register", menuRegister, PackIconKind.Register);
 
+
+           
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -55,6 +53,9 @@ namespace Clinic
 
         private void PatientRegistration_Click(object sender, RoutedEventArgs e)
         {
+            StackPanelMain.Children.Clear();
+            
+            StackPanelMain.Children.Add(new UserControlRegister());
         }
     }
 }

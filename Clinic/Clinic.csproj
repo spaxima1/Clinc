@@ -69,6 +69,9 @@
     </ApplicationDefinition>
     <Compile Include="ItemMenu.cs" />
     <Compile Include="SubItem.cs" />
+    <Compile Include="UserControlRegister.xaml.cs">
+      <DependentUpon>UserControlRegister.xaml</DependentUpon>
+    </Compile>
     <Page Include="Clerk.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +92,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ModernButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrationFormTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
