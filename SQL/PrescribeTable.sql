@@ -22,7 +22,6 @@ alter table Prescribes add
 	REFERENCES Patients(PatientID)
 
 
-
 alter table Prescribes add
 	CONSTRAINT FK_PrescribeDoctorID FOREIGN KEY (DoctorID)
 	REFERENCES Doctors(DoctorID)
