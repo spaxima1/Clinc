@@ -7,5 +7,8 @@ CREATE TABLE Doctors(
 	DoctorPassword varchar(128) not null,
 	DoctorStartDate DATE DEFAULT  GETDATE(),
 	DoctorEndDate DATE,
-	CONSTRAINT UC_Clerk UNIQUE (DoctorUserName)
+	CONSTRAINT UC_Doctor UNIQUE (DoctorUserName)
 )
+
+ALTER TABLE Doctors
+ADD DoctorSpecialty  nvarchar(100);
