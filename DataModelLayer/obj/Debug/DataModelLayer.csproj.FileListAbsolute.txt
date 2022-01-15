@@ -1,0 +1,12 @@
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\DataModelLayer.dll.config
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\DataModelLayer.dll
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\DataModelLayer.pdb
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\EntityFramework.dll
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\EntityFramework.xml
+D:\wpf\clinic\Clinic\DataModelLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\wpf\clinic\Clinic\DataModelLayer\obj\Debug\DataModelLayer.csprojAssemblyReference.cache
+D:\wpf\clinic\Clinic\DataModelLayer\obj\Debug\DataModelLayer.csproj.CoreCompileInputs.cache
+D:\wpf\clinic\Clinic\DataModelLayer\obj\Debug\DataModelLayer.csproj.CopyComplete
+D:\wpf\clinic\Clinic\DataModelLayer\obj\Debug\DataModelLayer.dll
+D:\wpf\clinic\Clinic\DataModelLayer\obj\Debug\DataModelLayer.pdb

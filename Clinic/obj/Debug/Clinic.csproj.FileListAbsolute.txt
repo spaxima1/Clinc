@@ -31,3 +31,12 @@ D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlRegister.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlRegister.baml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\RegistrationFormTheme.baml
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\DataModelLayer.dll
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.dll
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.SqlServer.dll
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\DataModelLayer.pdb
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\DataModelLayer.dll.config
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.xml
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.SqlServer.xml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlMedicine.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlMedicine.baml

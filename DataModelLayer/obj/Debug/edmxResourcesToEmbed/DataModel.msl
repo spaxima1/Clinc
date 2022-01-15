@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ClinicDBModelStoreContainer" CdmEntityContainer="ClinicDBEntities">
+    <EntitySetMapping Name="Clerks">
+      <EntityTypeMapping TypeName="ClinicDBModel.Clerk">
+        <MappingFragment StoreEntitySet="Clerks">
+          <ScalarProperty Name="ClerkID" ColumnName="ClerkID" />
+          <ScalarProperty Name="ClerkUserName" ColumnName="ClerkUserName" />
+          <ScalarProperty Name="ClerkName" ColumnName="ClerkName" />
+          <ScalarProperty Name="ClerkFamily" ColumnName="ClerkFamily" />
+          <ScalarProperty Name="ClerkPassword" ColumnName="ClerkPassword" />
+          <ScalarProperty Name="ClerkStartDate" ColumnName="ClerkStartDate" />
+          <ScalarProperty Name="ClerkEndDate" ColumnName="ClerkEndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiseaseRegistrations">
+      <EntityTypeMapping TypeName="ClinicDBModel.DiseaseRegistration">
+        <MappingFragment StoreEntitySet="DiseaseRegistration">
+          <ScalarProperty Name="DiseaseID" ColumnName="DiseaseID" />
+          <ScalarProperty Name="DiseaseName" ColumnName="DiseaseName" />
+          <ScalarProperty Name="DiseaseSigns" ColumnName="DiseaseSigns" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="ClinicDBModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctors">
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="DoctorUserName" ColumnName="DoctorUserName" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+          <ScalarProperty Name="DoctorPassword" ColumnName="DoctorPassword" />
+          <ScalarProperty Name="DoctorStartDate" ColumnName="DoctorStartDate" />
+          <ScalarProperty Name="DoctorEndDate" ColumnName="DoctorEndDate" />
+          <ScalarProperty Name="DoctorSpecialty" ColumnName="DoctorSpecialty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="ClinicDBModel.Medicine">
+        <MappingFragment StoreEntitySet="Medicines">
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+          <ScalarProperty Name="MedicineCount" ColumnName="MedicineCount" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="MedicinePurchasePrice" ColumnName="MedicinePurchasePrice" />
+          <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="ClinicDBModel.Patient">
+        <MappingFragment StoreEntitySet="Patients">
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+          <ScalarProperty Name="PatientDateBirth" ColumnName="PatientDateBirth" />
+          <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+          <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
+          <ScalarProperty Name="ClerkID" ColumnName="ClerkID" />
+          <ScalarProperty Name="PatientGender" ColumnName="PatientGender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescribes">
+      <EntityTypeMapping TypeName="ClinicDBModel.Prescribe">
+        <MappingFragment StoreEntitySet="Prescribes">
+          <ScalarProperty Name="PrescribeID" ColumnName="PrescribeID" />
+          <ScalarProperty Name="MedicineCount" ColumnName="MedicineCount" />
+          <ScalarProperty Name="PrescribeDate" ColumnName="PrescribeDate" />
+          <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

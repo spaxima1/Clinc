@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClinicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clerks">
+    <Key>
+      <PropertyRef Name="ClerkID" />
+    </Key>
+    <Property Name="ClerkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClerkUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClerkName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="ClerkFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="ClerkPassword" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClerkStartDate" Type="date" />
+    <Property Name="ClerkEndDate" Type="date" />
+  </EntityType>
+  <EntityType Name="DiseaseRegistration">
+    <Key>
+      <PropertyRef Name="DiseaseID" />
+    </Key>
+    <Property Name="DiseaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiseaseName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiseaseSigns" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="DoctorID" Type="int" />
+  </EntityType>
+  <EntityType Name="Doctors">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+    </Key>
+    <Property Name="DoctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="DoctorPassword" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="DoctorStartDate" Type="date" />
+    <Property Name="DoctorEndDate" Type="date" />
+    <Property Name="DoctorSpecialty" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Medicines">
+    <Key>
+      <PropertyRef Name="MedicineID" />
+    </Key>
+    <Property Name="MedicineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MedicineName" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="MedicineCount" Type="int" Nullable="false" />
+    <Property Name="ExpirationDate" Type="date" Nullable="false" />
+    <Property Name="MedicinePurchasePrice" Type="bigint" Nullable="false" />
+    <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PatientDateBirth" Type="date" />
+    <Property Name="PatientAddress" Type="nvarchar" MaxLength="300" />
+    <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="ClerkID" Type="int" />
+    <Property Name="PatientGender" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prescribes">
+    <Key>
+      <PropertyRef Name="PrescribeID" />
+    </Key>
+    <Property Name="PrescribeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MedicineCount" Type="int" Nullable="false" />
+    <Property Name="PrescribeDate" Type="date" />
+    <Property Name="MedicineID" Type="int" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="DoctorID" Type="int" />
+  </EntityType>
+  <Association Name="FK_ClerkID">
+    <End Role="Clerks" Type="Self.Clerks" Multiplicity="0..1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clerks">
+        <PropertyRef Name="ClerkID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="ClerkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiseaseDoctorID">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
+    <End Role="DiseaseRegistration" Type="Self.DiseaseRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="DiseaseRegistration">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiseasePatientID">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <End Role="DiseaseRegistration" Type="Self.DiseaseRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="DiseaseRegistration">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrescribeDoctorID">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
+    <End Role="Prescribes" Type="Self.Prescribes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="Prescribes">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrescribeMedicineID">
+    <End Role="Medicines" Type="Self.Medicines" Multiplicity="0..1" />
+    <End Role="Prescribes" Type="Self.Prescribes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicines">
+        <PropertyRef Name="MedicineID" />
+      </Principal>
+      <Dependent Role="Prescribes">
+        <PropertyRef Name="MedicineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrescribePatientID">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <End Role="Prescribes" Type="Self.Prescribes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="Prescribes">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClinicDBModelStoreContainer">
+    <EntitySet Name="Clerks" EntityType="Self.Clerks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiseaseRegistration" EntityType="Self.DiseaseRegistration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prescribes" EntityType="Self.Prescribes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">
+      <End Role="Clerks" EntitySet="Clerks" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiseaseDoctorID" Association="Self.FK_DiseaseDoctorID">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="DiseaseRegistration" EntitySet="DiseaseRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiseasePatientID" Association="Self.FK_DiseasePatientID">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="DiseaseRegistration" EntitySet="DiseaseRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrescribeDoctorID" Association="Self.FK_PrescribeDoctorID">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrescribeMedicineID" Association="Self.FK_PrescribeMedicineID">
+      <End Role="Medicines" EntitySet="Medicines" />
+      <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrescribePatientID" Association="Self.FK_PrescribePatientID">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

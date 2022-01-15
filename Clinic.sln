@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic", "Clinic\Clinic.csproj", "{2A289CE5-B7C5-4AA5-BFFA-11785CDF9F9E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513} = {BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModelLayer", "DataModelLayer\DataModelLayer.csproj", "{BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{2A289CE5-B7C5-4AA5-BFFA-11785CDF9F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A289CE5-B7C5-4AA5-BFFA-11785CDF9F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A289CE5-B7C5-4AA5-BFFA-11785CDF9F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2EFD54-F1BB-4B8C-AAAD-4A4519BE4513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

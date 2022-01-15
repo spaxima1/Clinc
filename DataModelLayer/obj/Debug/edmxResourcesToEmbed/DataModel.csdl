@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClinicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clerk">
+    <Key>
+      <PropertyRef Name="ClerkID" />
+    </Key>
+    <Property Name="ClerkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClerkUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClerkName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClerkFamily" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClerkPassword" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClerkStartDate" Type="DateTime" Precision="0" />
+    <Property Name="ClerkEndDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_ClerkID" FromRole="Clerks" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="DiseaseRegistration">
+    <Key>
+      <PropertyRef Name="DiseaseID" />
+    </Key>
+    <Property Name="DiseaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DiseaseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiseaseSigns" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PatientID" Type="Int32" />
+    <Property Name="DoctorID" Type="Int32" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_DiseaseDoctorID" FromRole="DiseaseRegistration" ToRole="Doctors" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_DiseasePatientID" FromRole="DiseaseRegistration" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoctorName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DoctorFamily" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DoctorPassword" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoctorStartDate" Type="DateTime" Precision="0" />
+    <Property Name="DoctorEndDate" Type="DateTime" Precision="0" />
+    <Property Name="DoctorSpecialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DiseaseRegistrations" Relationship="Self.FK_DiseaseDoctorID" FromRole="Doctors" ToRole="DiseaseRegistration" />
+    <NavigationProperty Name="Prescribes" Relationship="Self.FK_PrescribeDoctorID" FromRole="Doctors" ToRole="Prescribes" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="MedicineID" />
+    </Key>
+    <Property Name="MedicineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MedicineName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MedicineCount" Type="Int32" Nullable="false" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MedicinePurchasePrice" Type="Int64" Nullable="false" />
+    <Property Name="MedicineSaleePrice" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Prescribes" Relationship="Self.FK_PrescribeMedicineID" FromRole="Medicines" ToRole="Prescribes" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PatientFamily" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PatientDateBirth" Type="DateTime" Precision="0" />
+    <Property Name="PatientAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PatientPhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClerkID" Type="Int32" />
+    <Property Name="PatientGender" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Clerk" Relationship="Self.FK_ClerkID" FromRole="Patients" ToRole="Clerks" />
+    <NavigationProperty Name="DiseaseRegistrations" Relationship="Self.FK_DiseasePatientID" FromRole="Patients" ToRole="DiseaseRegistration" />
+    <NavigationProperty Name="Prescribes" Relationship="Self.FK_PrescribePatientID" FromRole="Patients" ToRole="Prescribes" />
+  </EntityType>
+  <EntityType Name="Prescribe">
+    <Key>
+      <PropertyRef Name="PrescribeID" />
+    </Key>
+    <Property Name="PrescribeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MedicineCount" Type="Int32" Nullable="false" />
+    <Property Name="PrescribeDate" Type="DateTime" Precision="0" />
+    <Property Name="MedicineID" Type="Int32" />
+    <Property Name="PatientID" Type="Int32" />
+    <Property Name="DoctorID" Type="Int32" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_PrescribeDoctorID" FromRole="Prescribes" ToRole="Doctors" />
+    <NavigationProperty Name="Medicine" Relationship="Self.FK_PrescribeMedicineID" FromRole="Prescribes" ToRole="Medicines" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_PrescribePatientID" FromRole="Prescribes" ToRole="Patients" />
+  </EntityType>
+  <Association Name="FK_ClerkID">
+    <End Role="Clerks" Type="Self.Clerk" Multiplicity="0..1" />
+    <End Role="Patients" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clerks">
+        <PropertyRef Name="ClerkID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="ClerkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiseaseDoctorID">
+    <End Role="Doctors" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="DiseaseRegistration" Type="Self.DiseaseRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="DiseaseRegistration">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiseasePatientID">
+    <End Role="Patients" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="DiseaseRegistration" Type="Self.DiseaseRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="DiseaseRegistration">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrescribeDoctorID">
+    <End Role="Doctors" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Prescribes" Type="Self.Prescribe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="Prescribes">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrescribeMedicineID">
+    <End Role="Medicines" Type="Self.Medicine" Multiplicity="0..1" />
+    <End Role="Prescribes" Type="Self.Prescribe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicines">
+        <PropertyRef Name="MedicineID" />
+      </Principal>
+      <Dependent Role="Prescribes">
+        <PropertyRef Name="MedicineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrescribePatientID">
+    <End Role="Patients" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="Prescribes" Type="Self.Prescribe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="Prescribes">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClinicDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clerks" EntityType="Self.Clerk" />
+    <EntitySet Name="DiseaseRegistrations" EntityType="Self.DiseaseRegistration" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="Prescribes" EntityType="Self.Prescribe" />
+    <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">
+      <End Role="Clerks" EntitySet="Clerks" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiseaseDoctorID" Association="Self.FK_DiseaseDoctorID">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="DiseaseRegistration" EntitySet="DiseaseRegistrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiseasePatientID" Association="Self.FK_DiseasePatientID">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="DiseaseRegistration" EntitySet="DiseaseRegistrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrescribeDoctorID" Association="Self.FK_PrescribeDoctorID">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrescribeMedicineID" Association="Self.FK_PrescribeMedicineID">
+      <End Role="Medicines" EntitySet="Medicines" />
+      <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrescribePatientID" Association="Self.FK_PrescribePatientID">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
