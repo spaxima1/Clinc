@@ -16,3 +16,9 @@ chk_phone CHECK (PatientPhoneNumber not like '%[^0-9]%')
 
 ALTER TABLE Patients
 ADD  PatientGender tinyint not null	;
+
+alter table Patients
+alter column PatientPhoneNumber varchar(12) not null;
+
+ALTER TABLE Patients
+ADD CONSTRAINT UC_Patients UNIQUE (PatientPhoneNumber);
