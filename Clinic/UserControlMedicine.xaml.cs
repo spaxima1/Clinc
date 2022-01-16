@@ -30,7 +30,19 @@ namespace Clinic
 
         private void SearchMedicinebtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(database.fn_dr("Dralipor").ToList()[0].DoctorFamily);
+            var dataMeadisan = database.find_prescibes_By_phonenumber(PhoneNumberTxt.Text).OrderBy(c => c.PrescribeDate).ToList();
+            DataGrid_Medicine.ItemsSource = dataMeadisan;
+            try
+            {
+                var sum = database.sum_medicineSaleePrice(PhoneNumberTxt.Text, dataMeadisan[0].PrescribeDate).First();
+                SumMedicnetxt.Text = Convert.ToInt64(sum).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
 
         }
     }
