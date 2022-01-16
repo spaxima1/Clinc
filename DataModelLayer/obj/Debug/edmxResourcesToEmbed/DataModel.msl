@@ -77,5 +77,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Vw_prescibes">
+      <EntityTypeMapping TypeName="ClinicDBModel.Vw_prescibes">
+        <MappingFragment StoreEntitySet="Vw_prescibes">
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PrescribeDate" ColumnName="PrescribeDate" />
+          <ScalarProperty Name="MedicineCount" ColumnName="MedicineCount" />
+          <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

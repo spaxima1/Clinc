@@ -185,5 +185,24 @@
       <End Role="Patients" EntitySet="Patients" />
       <End Role="Prescribes" EntitySet="Prescribes" />
     </AssociationSet>
+    <EntitySet Name="Vw_prescibes" EntityType="ClinicDBModel.Vw_prescibes" />
   </EntityContainer>
+  <EntityType Name="Vw_prescibes">
+    <Key>
+      <PropertyRef Name="PatientName" />
+      <PropertyRef Name="PatientFamily" />
+      <PropertyRef Name="MedicineName" />
+      <PropertyRef Name="MedicineCount" />
+      <PropertyRef Name="DoctorFamily" />
+      <PropertyRef Name="DoctorName" />
+    </Key>
+    <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="MedicineName" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="MedicineCount" Type="Int32" Nullable="false" />
+    <Property Name="PrescribeDate" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="DoctorFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="DoctorName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

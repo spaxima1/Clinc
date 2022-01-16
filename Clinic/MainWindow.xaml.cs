@@ -36,7 +36,27 @@ namespace Clinic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new Clerk().Show();
+            if (UserNameTxt.Text == "a" && UserPasswordtxt.Password == "1")
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("رمز یا یوز اشتباه است");
+                return;
+            }
+        }
+
+        private void UserNameTxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+                UserPasswordtxt.Focus();
+        }
+
+        private void UserPasswordtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+                Button_Click(Loginbtn, new RoutedEventArgs());
         }
     }
 }

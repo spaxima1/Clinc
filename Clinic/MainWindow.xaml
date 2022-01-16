@@ -58,7 +58,7 @@
                             Background="Transparent"
                             BorderThickness="0"
                             
-                            
+                            KeyUp="UserNameTxt_KeyUp"
                             Width="235"
                             HorizontalContentAlignment="Left"
                             Opacity="0.5" Height="25" Margin="65,0,0,0"/>
@@ -92,7 +92,7 @@
                             x:Name="UserPasswordtxt"
                             FontFamily="IRANSans"
                             FontWeight="Light"
-                            
+                            KeyUp="UserPasswordtxt_KeyUp"
                             FontSize="20"
                             HorizontalAlignment="Center"
                             Foreground="White"
@@ -132,7 +132,7 @@
                         Background="White"
                         Opacity="0.5"/>
                 <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-                    <Button  Width="100"  Click="Button_Click" Height="40" Content="LOGIN" Margin="60,0,60,0" Style="{StaticResource ButtonStyles}"/>
+                    <Button x:Name="Loginbtn" Width="100"  Click="Button_Click" Height="40" Content="LOGIN" Margin="60,0,60,0" Style="{StaticResource ButtonStyles}"/>
                     <Button  Width="100" Height="40" Content="ReGISTER"  Style="{StaticResource ButtonStyles}"/>
 
                 </StackPanel>

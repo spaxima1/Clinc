@@ -31,5 +31,6 @@ namespace DataModelLayer
         public virtual DbSet<Medicine> Medicines { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Prescribe> Prescribes { get; set; }
+        public virtual DbSet<Vw_prescibes> Vw_prescibes { get; set; }
     }
 }

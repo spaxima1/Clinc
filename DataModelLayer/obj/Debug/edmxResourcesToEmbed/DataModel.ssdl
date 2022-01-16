@@ -70,6 +70,26 @@
     <Property Name="PatientID" Type="int" />
     <Property Name="DoctorID" Type="int" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vw_prescibes">
+    <Key>
+      <PropertyRef Name="PatientName" />
+      <PropertyRef Name="PatientFamily" />
+      <PropertyRef Name="MedicineName" />
+      <PropertyRef Name="MedicineCount" />
+      <PropertyRef Name="DoctorFamily" />
+      <PropertyRef Name="DoctorName" />
+    </Key>
+    <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="MedicineName" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="MedicineCount" Type="int" Nullable="false" />
+    <Property Name="PrescribeDate" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" />
+    <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+  </EntityType>
   <Association Name="FK_ClerkID">
     <End Role="Clerks" Type="Self.Clerks" Multiplicity="0..1" />
     <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
@@ -149,6 +169,18 @@
     <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Prescribes" EntityType="Self.Prescribes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vw_prescibes" EntityType="Self.Vw_prescibes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vw_prescibes].[PatientName] AS [PatientName], 
+    [Vw_prescibes].[PatientFamily] AS [PatientFamily], 
+    [Vw_prescibes].[MedicineName] AS [MedicineName], 
+    [Vw_prescibes].[MedicineCount] AS [MedicineCount], 
+    [Vw_prescibes].[PrescribeDate] AS [PrescribeDate], 
+    [Vw_prescibes].[Gender] AS [Gender], 
+    [Vw_prescibes].[DoctorFamily] AS [DoctorFamily], 
+    [Vw_prescibes].[DoctorName] AS [DoctorName]
+    FROM [dbo].[Vw_prescibes] AS [Vw_prescibes]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">
       <End Role="Clerks" EntitySet="Clerks" />
       <End Role="Patients" EntitySet="Patients" />

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Clinic;
 namespace Clinic
 {
     /// <summary>
@@ -13,5 +13,11 @@ namespace Clinic
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            MainWindow w_n = new MainWindow();
+            w_n.ShowDialog();
+            new Clerk().Show();
+        }
     }
 }
