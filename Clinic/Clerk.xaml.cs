@@ -57,5 +57,12 @@ namespace Clinic
             
             StackPanelMain.Children.Add(new UserControlRegister());
         }
+
+        private void MedixinePatientbtn_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanelMain.Children.Clear();
+
+            StackPanelMain.Children.Add(new UserControlMedicine());
+        }
     }
 }

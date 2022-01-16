@@ -85,6 +85,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             <PropertyRef Name="MedicineCount" />
             <PropertyRef Name="DoctorFamily" />
             <PropertyRef Name="DoctorName" />
+            <PropertyRef Name="MedicineSaleePrice" />
           </Key>
           <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
@@ -94,6 +95,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <Property Name="Gender" Type="varchar" MaxLength="6" />
           <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
         </EntityType>
         <Association Name="FK_ClerkID">
           <End Role="Clerks" Type="Self.Clerks" Multiplicity="0..1" />
@@ -183,7 +185,8 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     [Vw_prescibes].[PrescribeDate] AS [PrescribeDate], 
     [Vw_prescibes].[Gender] AS [Gender], 
     [Vw_prescibes].[DoctorFamily] AS [DoctorFamily], 
-    [Vw_prescibes].[DoctorName] AS [DoctorName]
+    [Vw_prescibes].[DoctorName] AS [DoctorName], 
+    [Vw_prescibes].[MedicineSaleePrice] AS [MedicineSaleePrice]
     FROM [dbo].[Vw_prescibes] AS [Vw_prescibes]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">
@@ -410,6 +413,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             <PropertyRef Name="MedicineCount" />
             <PropertyRef Name="DoctorFamily" />
             <PropertyRef Name="DoctorName" />
+            <PropertyRef Name="MedicineSaleePrice" />
           </Key>
           <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
@@ -419,6 +423,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="DoctorFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="DoctorName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="MedicineSaleePrice" Type="Int64" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -505,6 +510,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <EntitySetMapping Name="Vw_prescibes">
             <EntityTypeMapping TypeName="ClinicDBModel.Vw_prescibes">
               <MappingFragment StoreEntitySet="Vw_prescibes">
+                <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
                 <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
                 <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />

@@ -40,3 +40,4 @@ D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.xml
 D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.SqlServer.xml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlMedicine.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlMedicine.baml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\DataGridTheme.baml

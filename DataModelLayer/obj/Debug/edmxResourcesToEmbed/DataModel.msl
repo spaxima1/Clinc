@@ -80,6 +80,7 @@
     <EntitySetMapping Name="Vw_prescibes">
       <EntityTypeMapping TypeName="ClinicDBModel.Vw_prescibes">
         <MappingFragment StoreEntitySet="Vw_prescibes">
+          <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
           <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
           <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />

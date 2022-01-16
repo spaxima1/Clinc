@@ -5,18 +5,89 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Clinic"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="800"
+             MinHeight="650" MinWidth="800" >
     <Grid>
-        <DataGrid
-            x:Name="DataGrid"
-            IsReadOnly="True"
-            AutoGenerateColumns="False"
-            ItemsSource="{Binding Meadicine,UpdateSourceTrigger=PropertyChanged}"
-            Margin="10"
-            >
-            <DataGrid.Columns>
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
                 
-            </DataGrid.Columns>
-        </DataGrid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                            <Border  Padding="10 5">
+                                <Border.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#7be9f6" Offset="0.0"/>
+                                        <GradientStop Color="#8be398" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft"
+                                             >
+                                    <TextBlock Text="جمع کل :" Margin="0 0 20 0"/>
+                                    <TextBlock x:Name="SumMedicnetxt" FlowDirection="LeftToRight" MinWidth="50" Text="20000"/>
+                                    
+                                </StackPanel>
+                            </Border>
+                            <Button  Width="100" Height="30" Content="چاپ" Margin="20 0 0 0" Style="{StaticResource ButtonStyles}"/>
+
+                        </StackPanel>
+
+                    </Grid>
+                    <DataGrid 
+                    x:Name="DataGrid_Medicine"
+                    IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    
+                    Margin="10"
+                    FlowDirection="RightToLeft" AlternationCount="1"
+                    >
+                        <DataGrid.Effect>
+                            <DropShadowEffect/>
+                        </DataGrid.Effect>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="اسم دارو" 
+                                            Binding="{Binding MedicineName}"
+                                            MinWidth="250"
+                                        >
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="تعداد" 
+                                            Binding="{Binding MedicineCount}"
+                                            MinWidth="150"
+                                        >
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="قیمت" 
+                                            Binding="{Binding MedicineSaleePrice}"
+                                            MinWidth="150"
+                                        >
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="تاریخ" 
+                                            Binding="{Binding PrescribeDate}"
+                                            MinWidth="500"
+                                        >
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

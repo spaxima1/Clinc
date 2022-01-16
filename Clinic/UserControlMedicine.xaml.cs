@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DataModelLayer;
 namespace Clinic
 {
     /// <summary>
@@ -23,6 +23,10 @@ namespace Clinic
         public UserControlMedicine()
         {
             InitializeComponent();
+            DataGrid_Medicine.ItemsSource = database.Vw_prescibes.ToList();
+
         }
+        ClinicDBEntities database = new ClinicDBEntities();
+
     }
 }

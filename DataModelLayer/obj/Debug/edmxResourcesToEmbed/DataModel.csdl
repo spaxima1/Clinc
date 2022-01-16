@@ -195,6 +195,7 @@
       <PropertyRef Name="MedicineCount" />
       <PropertyRef Name="DoctorFamily" />
       <PropertyRef Name="DoctorName" />
+      <PropertyRef Name="MedicineSaleePrice" />
     </Key>
     <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
     <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
@@ -204,5 +205,6 @@
     <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
     <Property Name="DoctorFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
     <Property Name="DoctorName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="MedicineSaleePrice" Type="Int64" Nullable="false" />
   </EntityType>
 </Schema>

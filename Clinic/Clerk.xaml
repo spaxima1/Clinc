@@ -48,7 +48,7 @@
                     <Label HorizontalContentAlignment="Center"   Content="ثبت نام بیمار"/>
                 </StackPanel>
             </Button>
-            <Button  x:Name="d" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" Click="PatientRegistration_Click">
+            <Button  x:Name="MedixinePatientbtn" Click="MedixinePatientbtn_Click" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" >
                     <StackPanel  Style="{StaticResource StackPanelHover}"  >
                         <Label HorizontalContentAlignment="Center"   Content="دارو های بیمار"/>
                     </StackPanel>

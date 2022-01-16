@@ -22,5 +22,6 @@ namespace DataModelLayer
         public string Gender { get; set; }
         public string DoctorFamily { get; set; }
         public string DoctorName { get; set; }
+        public long MedicineSaleePrice { get; set; }
     }
 }
