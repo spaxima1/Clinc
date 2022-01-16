@@ -77,9 +77,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="fn_dr" FunctionName="ClinicDBModel.Store.fn_dr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.fn_dr_Result">
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="DoctorUserName" ColumnName="DoctorUserName" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+          <ScalarProperty Name="DoctorPassword" ColumnName="DoctorPassword" />
+          <ScalarProperty Name="DoctorStartDate" ColumnName="DoctorStartDate" />
+          <ScalarProperty Name="DoctorEndDate" ColumnName="DoctorEndDate" />
+          <ScalarProperty Name="DoctorSpecialty" ColumnName="DoctorSpecialty" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="Vw_prescibes">
       <EntityTypeMapping TypeName="ClinicDBModel.Vw_prescibes">
         <MappingFragment StoreEntitySet="Vw_prescibes">
+          <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
           <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
           <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
           <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
@@ -92,5 +107,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="find_prescibes_By_phonenumber" FunctionName="ClinicDBModel.Store.find_prescibes_By_phonenumber">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.find_prescibes_By_phonenumber_Result">
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+          <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+          <ScalarProperty Name="MedicineCount" ColumnName="MedicineCount" />
+          <ScalarProperty Name="PrescribeDate" ColumnName="PrescribeDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
+          <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sum_medicineSaleePrice" FunctionName="ClinicDBModel.Store.sum_medicineSaleePrice" />
   </EntityContainerMapping>
 </Mapping>

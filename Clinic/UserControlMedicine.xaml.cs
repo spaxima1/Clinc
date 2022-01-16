@@ -28,5 +28,10 @@ namespace Clinic
         }
         ClinicDBEntities database = new ClinicDBEntities();
 
+        private void SearchMedicinebtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(database.fn_dr("Dralipor").ToList()[0].DoctorFamily);
+
+        }
     }
 }

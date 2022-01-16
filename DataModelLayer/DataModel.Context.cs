@@ -12,6 +12,8 @@ namespace DataModelLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ClinicDBEntities : DbContext
     {
@@ -32,5 +34,39 @@ namespace DataModelLayer
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Prescribe> Prescribes { get; set; }
         public virtual DbSet<Vw_prescibes> Vw_prescibes { get; set; }
+    
+        [DbFunction("ClinicDBEntities", "fn_dr")]
+        public virtual IQueryable<fn_dr_Result> fn_dr(string ss)
+        {
+            var ssParameter = ss != null ?
+                new ObjectParameter("ss", ss) :
+                new ObjectParameter("ss", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_dr_Result>("[ClinicDBEntities].[fn_dr](@ss)", ssParameter);
+        }
+    
+        [DbFunction("ClinicDBEntities", "find_prescibes_By_phonenumber")]
+        public virtual IQueryable<find_prescibes_By_phonenumber_Result> find_prescibes_By_phonenumber(string phone)
+        {
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<find_prescibes_By_phonenumber_Result>("[ClinicDBEntities].[find_prescibes_By_phonenumber](@phone)", phoneParameter);
+        }
+    
+        [DbFunction("ClinicDBEntities", "sum_medicineSaleePrice")]
+        public virtual IQueryable<Nullable<long>> sum_medicineSaleePrice(string phone, Nullable<System.DateTime> date_time)
+        {
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var date_timeParameter = date_time.HasValue ?
+                new ObjectParameter("date_time", date_time) :
+                new ObjectParameter("date_time", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<long>>("[ClinicDBEntities].[sum_medicineSaleePrice](@phone, @date_time)", phoneParameter, date_timeParameter);
+        }
     }
 }

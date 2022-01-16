@@ -10,9 +10,8 @@
 namespace DataModelLayer
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Vw_prescibes
+    public partial class find_prescibes_By_phonenumber_Result
     {
         public string PatientName { get; set; }
         public string PatientFamily { get; set; }

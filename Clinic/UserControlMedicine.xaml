@@ -22,7 +22,51 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid>
-                    
+                    <Border VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <TextBox
+                            x:Name="PhoneNumberTxt"                           
+                            FontFamily="IRANSans"
+                            FontWeight="Light"
+                            FontSize="20"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            
+                            
+                            Width="235"
+                            HorizontalContentAlignment="Left"
+                            Opacity="0.5" Height="25" Margin="65,0,0,0"/>
+
+                                <TextBlock IsHitTestVisible="False" 
+                                   Text="شماره موبایل" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="-80,0,0,0" Foreground="White"
+                                   FontFamily="IRANSans"
+                                   FontSize="15" Opacity="0.5"
+                                  
+                                   >
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=PhoneNumberTxt}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+
+
+                                </TextBlock>
+                            </Grid>
+                            <Button x:Name="SearchMedicinebtn" Click="SearchMedicinebtn_Click" Width="100" Height="30" Content="جست جو" Margin="20 0 0 0" Style="{StaticResource ButtonStyles}"/>
+
+                        </StackPanel>
+                    </Border>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>

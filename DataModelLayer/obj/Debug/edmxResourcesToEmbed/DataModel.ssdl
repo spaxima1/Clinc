@@ -81,6 +81,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
       <PropertyRef Name="DoctorFamily" />
       <PropertyRef Name="DoctorName" />
       <PropertyRef Name="MedicineSaleePrice" />
+      <PropertyRef Name="PatientPhoneNumber" />
     </Key>
     <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
     <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
@@ -91,6 +92,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
     <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
     <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
+    <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
   </EntityType>
   <Association Name="FK_ClerkID">
     <End Role="Clerks" Type="Self.Clerks" Multiplicity="0..1" />
@@ -164,6 +166,53 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="find_prescibes_By_phonenumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="MedicineName" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="MedicineCount" Type="int" Nullable="false" />
+          <Property Name="PrescribeDate" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
+          <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_dr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ss" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="DoctorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorPassword" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DoctorStartDate" Type="date" />
+          <Property Name="DoctorEndDate" Type="date" />
+          <Property Name="DoctorSpecialty" Type="nvarchar" MaxLength="100" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="sum_medicineSaleePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="date_time" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="total" Type="bigint" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <EntityContainer Name="ClinicDBModelStoreContainer">
     <EntitySet Name="Clerks" EntityType="Self.Clerks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DiseaseRegistration" EntityType="Self.DiseaseRegistration" Schema="dbo" store:Type="Tables" />
@@ -181,7 +230,8 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     [Vw_prescibes].[Gender] AS [Gender], 
     [Vw_prescibes].[DoctorFamily] AS [DoctorFamily], 
     [Vw_prescibes].[DoctorName] AS [DoctorName], 
-    [Vw_prescibes].[MedicineSaleePrice] AS [MedicineSaleePrice]
+    [Vw_prescibes].[MedicineSaleePrice] AS [MedicineSaleePrice], 
+    [Vw_prescibes].[PatientPhoneNumber] AS [PatientPhoneNumber]
     FROM [dbo].[Vw_prescibes] AS [Vw_prescibes]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">

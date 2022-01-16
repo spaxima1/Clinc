@@ -74,6 +74,12 @@
     <Compile Include="Doctor.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="find_prescibes_By_phonenumber_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fn_dr_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Medicine.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

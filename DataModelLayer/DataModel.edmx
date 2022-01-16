@@ -86,6 +86,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             <PropertyRef Name="DoctorFamily" />
             <PropertyRef Name="DoctorName" />
             <PropertyRef Name="MedicineSaleePrice" />
+            <PropertyRef Name="PatientPhoneNumber" />
           </Key>
           <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
@@ -96,6 +97,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
+          <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
         </EntityType>
         <Association Name="FK_ClerkID">
           <End Role="Clerks" Type="Self.Clerks" Multiplicity="0..1" />
@@ -169,6 +171,53 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="find_prescibes_By_phonenumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="MedicineName" Type="nvarchar" MaxLength="60" Nullable="false" />
+                <Property Name="MedicineCount" Type="int" Nullable="false" />
+                <Property Name="PrescribeDate" Type="date" />
+                <Property Name="Gender" Type="varchar" MaxLength="6" />
+                <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
+                <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_dr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ss" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="DoctorID" Type="int" Nullable="false" />
+                <Property Name="DoctorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+                <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorPassword" Type="varchar" MaxLength="128" Nullable="false" />
+                <Property Name="DoctorStartDate" Type="date" />
+                <Property Name="DoctorEndDate" Type="date" />
+                <Property Name="DoctorSpecialty" Type="nvarchar" MaxLength="100" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="sum_medicineSaleePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="date_time" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="total" Type="bigint" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="ClinicDBModelStoreContainer">
           <EntitySet Name="Clerks" EntityType="Self.Clerks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiseaseRegistration" EntityType="Self.DiseaseRegistration" Schema="dbo" store:Type="Tables" />
@@ -186,7 +235,8 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     [Vw_prescibes].[Gender] AS [Gender], 
     [Vw_prescibes].[DoctorFamily] AS [DoctorFamily], 
     [Vw_prescibes].[DoctorName] AS [DoctorName], 
-    [Vw_prescibes].[MedicineSaleePrice] AS [MedicineSaleePrice]
+    [Vw_prescibes].[MedicineSaleePrice] AS [MedicineSaleePrice], 
+    [Vw_prescibes].[PatientPhoneNumber] AS [PatientPhoneNumber]
     FROM [dbo].[Vw_prescibes] AS [Vw_prescibes]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">
@@ -403,8 +453,28 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             <End Role="Patients" EntitySet="Patients" />
             <End Role="Prescribes" EntitySet="Prescribes" />
           </AssociationSet>
+          <FunctionImport Name="fn_dr" IsComposable="true" ReturnType="Collection(ClinicDBModel.fn_dr_Result)">
+          <Parameter Name="ss" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="Vw_prescibes" EntityType="ClinicDBModel.Vw_prescibes" />
+          <FunctionImport Name="find_prescibes_By_phonenumber" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_prescibes_By_phonenumber_Result)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sum_medicineSaleePrice" IsComposable="true" ReturnType="Collection(Int64)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="date_time" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="fn_dr_Result">
+          <Property Type="Int32" Name="DoctorID" Nullable="false" />
+          <Property Type="String" Name="DoctorUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorFamily" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorPassword" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="DoctorStartDate" Nullable="true" Precision="10" />
+          <Property Type="DateTime" Name="DoctorEndDate" Nullable="true" Precision="10" />
+          <Property Type="String" Name="DoctorSpecialty" Nullable="true" MaxLength="100" />
+        </ComplexType>
         <EntityType Name="Vw_prescibes">
           <Key>
             <PropertyRef Name="PatientName" />
@@ -414,6 +484,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             <PropertyRef Name="DoctorFamily" />
             <PropertyRef Name="DoctorName" />
             <PropertyRef Name="MedicineSaleePrice" />
+            <PropertyRef Name="PatientPhoneNumber" />
           </Key>
           <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
@@ -424,7 +495,20 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <Property Name="DoctorFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="DoctorName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="MedicineSaleePrice" Type="Int64" Nullable="false" />
+          <Property Name="PatientPhoneNumber" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="find_prescibes_By_phonenumber_Result">
+          <Property Type="String" Name="PatientName" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="PatientFamily" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="MedicineName" Nullable="false" MaxLength="60" />
+          <Property Type="Int32" Name="MedicineCount" Nullable="false" />
+          <Property Type="DateTime" Name="PrescribeDate" Nullable="true" Precision="10" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="DoctorFamily" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
+          <Property Type="Int64" Name="MedicineSaleePrice" Nullable="false" />
+          <Property Type="String" Name="PatientPhoneNumber" Nullable="false" MaxLength="12" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -507,9 +591,24 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="fn_dr" FunctionName="ClinicDBModel.Store.fn_dr">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicDBModel.fn_dr_Result">
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DoctorUserName" ColumnName="DoctorUserName" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+                <ScalarProperty Name="DoctorPassword" ColumnName="DoctorPassword" />
+                <ScalarProperty Name="DoctorStartDate" ColumnName="DoctorStartDate" />
+                <ScalarProperty Name="DoctorEndDate" ColumnName="DoctorEndDate" />
+                <ScalarProperty Name="DoctorSpecialty" ColumnName="DoctorSpecialty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="Vw_prescibes">
             <EntityTypeMapping TypeName="ClinicDBModel.Vw_prescibes">
               <MappingFragment StoreEntitySet="Vw_prescibes">
+                <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
                 <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
                 <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
                 <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
@@ -522,6 +621,23 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="find_prescibes_By_phonenumber" FunctionName="ClinicDBModel.Store.find_prescibes_By_phonenumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicDBModel.find_prescibes_By_phonenumber_Result">
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="MedicineCount" ColumnName="MedicineCount" />
+                <ScalarProperty Name="PrescribeDate" ColumnName="PrescribeDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="MedicineSaleePrice" ColumnName="MedicineSaleePrice" />
+                <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sum_medicineSaleePrice" FunctionName="ClinicDBModel.Store.sum_medicineSaleePrice" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
