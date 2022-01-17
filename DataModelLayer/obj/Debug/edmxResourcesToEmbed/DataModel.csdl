@@ -203,6 +203,7 @@
     <FunctionImport Name="find_Clerk_byID" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_Clerk_byID_Result)">
       <Parameter Name="clrckid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Vw_Patients" EntityType="ClinicDBModel.Vw_Patients" />
   </EntityContainer>
   <ComplexType Name="fn_dr_Result">
     <Property Type="Int32" Name="DoctorID" Nullable="false" />
@@ -266,4 +267,21 @@
     <Property Type="DateTime" Name="ClerkStartDate" Nullable="true" Precision="10" />
     <Property Type="DateTime" Name="ClerkEndDate" Nullable="true" Precision="10" />
   </ComplexType>
+  <EntityType Name="Vw_Patients">
+    <Key>
+      <PropertyRef Name="PatientName" />
+      <PropertyRef Name="PatientFamily" />
+      <PropertyRef Name="PatientPhoneNumber" />
+      <PropertyRef Name="PatientGender" />
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="PatientDateBirth" Type="DateTime" Precision="0" />
+    <Property Name="PatientAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PatientPhoneNumber" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="PatientGender" Type="Byte" Nullable="false" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

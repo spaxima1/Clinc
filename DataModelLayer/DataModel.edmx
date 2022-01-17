@@ -76,6 +76,25 @@
           <Property Name="DoctorID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicDB.dbo.Vw_Patients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vw_Patients">
+          <Key>
+            <PropertyRef Name="PatientName" />
+            <PropertyRef Name="PatientFamily" />
+            <PropertyRef Name="PatientPhoneNumber" />
+            <PropertyRef Name="PatientGender" />
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="PatientDateBirth" Type="date" />
+          <Property Name="PatientAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PatientGender" Type="tinyint" Nullable="false" />
+          <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vw_prescibes">
           <Key>
@@ -258,6 +277,18 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prescribes" EntityType="Self.Prescribes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vw_Patients" EntityType="Self.Vw_Patients" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vw_Patients].[PatientName] AS [PatientName], 
+    [Vw_Patients].[PatientFamily] AS [PatientFamily], 
+    [Vw_Patients].[PatientDateBirth] AS [PatientDateBirth], 
+    [Vw_Patients].[PatientAddress] AS [PatientAddress], 
+    [Vw_Patients].[PatientPhoneNumber] AS [PatientPhoneNumber], 
+    [Vw_Patients].[PatientGender] AS [PatientGender], 
+    [Vw_Patients].[PatientID] AS [PatientID], 
+    [Vw_Patients].[Gender] AS [Gender]
+    FROM [dbo].[Vw_Patients] AS [Vw_Patients]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Vw_prescibes" EntityType="Self.Vw_prescibes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Vw_prescibes].[PatientName] AS [PatientName], 
@@ -502,8 +533,9 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="find_Clerk_byID" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_Clerk_byID_Result)">
-            <Parameter Name="clrckid" Mode="In" Type="Int32" />
+          <Parameter Name="clrckid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Vw_Patients" EntityType="ClinicDBModel.Vw_Patients" />
         </EntityContainer>
         <ComplexType Name="fn_dr_Result">
           <Property Type="Int32" Name="DoctorID" Nullable="false" />
@@ -567,6 +599,23 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
           <Property Type="DateTime" Name="ClerkStartDate" Nullable="true" Precision="10" />
           <Property Type="DateTime" Name="ClerkEndDate" Nullable="true" Precision="10" />
         </ComplexType>
+        <EntityType Name="Vw_Patients">
+          <Key>
+            <PropertyRef Name="PatientName" />
+            <PropertyRef Name="PatientFamily" />
+            <PropertyRef Name="PatientPhoneNumber" />
+            <PropertyRef Name="PatientGender" />
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="PatientDateBirth" Type="DateTime" Precision="0" />
+          <Property Name="PatientAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PatientPhoneNumber" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PatientGender" Type="Byte" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -722,6 +771,20 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Vw_Patients">
+            <EntityTypeMapping TypeName="ClinicDBModel.Vw_Patients">
+              <MappingFragment StoreEntitySet="Vw_Patients">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PatientGender" ColumnName="PatientGender" />
+                <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
+                <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+                <ScalarProperty Name="PatientDateBirth" ColumnName="PatientDateBirth" />
+                <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

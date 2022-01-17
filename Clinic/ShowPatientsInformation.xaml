@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Clinic.ShowPatientsInformation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinic"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="650" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="220">
+
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                <StackPanel.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#f9d89c" Offset="0.0"/>
+                        <GradientStop Color="#f99c9c" Offset="1"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+                <Button x:Name="Searchbtn" Click="Searchbtn_Click"   >
+                    <materialDesign:PackIcon Kind="Search"/>
+                </Button>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="111*"/>
+                        <RowDefinition Height="109*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox
+                            x:Name="UserNameTxt"                           
+                            FontFamily="IRANSans"
+                            FontWeight="Light"
+                            FontSize="20"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            
+                          
+                            Width="235"
+                           
+                            HorizontalContentAlignment="Left"
+                            Opacity="0.5" Height="45" Margin="65,94,0,94" Grid.RowSpan="2"/>
+
+                    <TextBlock IsHitTestVisible="False" 
+                                   Text="نام  کار بر" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="72,98,164,97" Foreground="White"
+                                   FontFamily="IRANSans"
+                                   FontSize="15" Opacity="0.5"
+                                   Style="{StaticResource textforTextBoxplaceHolder}" Grid.RowSpan="2"
+                                   >
+
+
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+
+        </Grid>
+        <ScrollViewer Grid.Row="1" Margin="10 0"  HorizontalScrollBarVisibility="Visible" >
+            <StackPanel  x:Name="dgridPatients" Height="400" >
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>

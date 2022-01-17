@@ -78,9 +78,15 @@
     <Compile Include="DataShowGrid.xaml.cs">
       <DependentUpon>DataShowGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InformationTemplate.xaml.cs">
+      <DependentUpon>InformationTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ItemMenu.cs" />
     <Compile Include="Print.xaml.cs">
       <DependentUpon>Print.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowPatientsInformation.xaml.cs">
+      <DependentUpon>ShowPatientsInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="SubItem.cs" />
     <Compile Include="UserControlMedicine.xaml.cs">
@@ -98,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DataShowGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegistrationFormTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowPatientsInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

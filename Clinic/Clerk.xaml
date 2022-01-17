@@ -58,6 +58,12 @@
                         <Label HorizontalContentAlignment="Center"   Content="دارو های بیمار"/>
                     </StackPanel>
                 </Button>
+                <Button  x:Name="Patientsbtn" Click="Patientsbtn_Click"  Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" >
+                    <StackPanel  Style="{StaticResource StackPanelHover}"  >
+                        <Label HorizontalContentAlignment="Center"   Content=  "نمایش  بیماران"/>
+                    </StackPanel>
+                </Button>
+
 
 
             </StackPanel>

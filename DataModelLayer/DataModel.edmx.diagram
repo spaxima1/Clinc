@@ -18,6 +18,7 @@
         <AssociationConnector Association="ClinicDBModel.FK_PrescribeMedicineID" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicDBModel.FK_PrescribePatientID" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ClinicDBModel.Vw_prescibes" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicDBModel.Vw_Patients" Width="1.5" PointX="10.375" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

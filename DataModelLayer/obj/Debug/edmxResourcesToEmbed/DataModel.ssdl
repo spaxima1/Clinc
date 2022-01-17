@@ -71,6 +71,25 @@
     <Property Name="DoctorID" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicDB.dbo.Vw_Patients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vw_Patients">
+    <Key>
+      <PropertyRef Name="PatientName" />
+      <PropertyRef Name="PatientFamily" />
+      <PropertyRef Name="PatientPhoneNumber" />
+      <PropertyRef Name="PatientGender" />
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PatientDateBirth" Type="date" />
+    <Property Name="PatientAddress" Type="nvarchar" MaxLength="300" />
+    <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="PatientGender" Type="tinyint" Nullable="false" />
+    <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Vw_prescibes">
     <Key>
@@ -253,6 +272,18 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Prescribes" EntityType="Self.Prescribes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vw_Patients" EntityType="Self.Vw_Patients" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vw_Patients].[PatientName] AS [PatientName], 
+    [Vw_Patients].[PatientFamily] AS [PatientFamily], 
+    [Vw_Patients].[PatientDateBirth] AS [PatientDateBirth], 
+    [Vw_Patients].[PatientAddress] AS [PatientAddress], 
+    [Vw_Patients].[PatientPhoneNumber] AS [PatientPhoneNumber], 
+    [Vw_Patients].[PatientGender] AS [PatientGender], 
+    [Vw_Patients].[PatientID] AS [PatientID], 
+    [Vw_Patients].[Gender] AS [Gender]
+    FROM [dbo].[Vw_Patients] AS [Vw_Patients]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Vw_prescibes" EntityType="Self.Vw_prescibes" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Vw_prescibes].[PatientName] AS [PatientName], 

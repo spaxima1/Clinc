@@ -150,5 +150,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Vw_Patients">
+      <EntityTypeMapping TypeName="ClinicDBModel.Vw_Patients">
+        <MappingFragment StoreEntitySet="Vw_Patients">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="PatientGender" ColumnName="PatientGender" />
+          <ScalarProperty Name="PatientPhoneNumber" ColumnName="PatientPhoneNumber" />
+          <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+          <ScalarProperty Name="PatientDateBirth" ColumnName="PatientDateBirth" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

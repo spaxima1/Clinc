@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Clinic.InformationTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinic"
+             mc:Ignorable="d" 
+             d:DesignHeight="45" d:DesignWidth="700">
+    <Grid>
+        <Border Margin="10 5" CornerRadius="12">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#f9d89c" Offset="0.0"/>
+                    <GradientStop Color="#f99c9c" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Height="35" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="4" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" 
+                           x:Name="Nametxt" Text="اسم بیمار"
+                           Margin="20 0 "/>
+                <TextBlock Grid.Column="3" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" 
+                           x:Name="Familytxt" Text="فامیل بیمار"
+                           Margin="20 0 "/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           x:Name="gendertxt" Text="جنیست "
+                         /> 
+                <TextBlock Grid.Column="2" VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           x:Name="PhoneNumbertxt" Text="شماره تلفن "
+                         />
+                <TextBlock Grid.Column="0" VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           x:Name="PatientDateBirthtxt" Text="تاریخ تولد"
+                         />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
