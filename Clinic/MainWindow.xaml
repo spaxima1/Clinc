@@ -60,8 +60,9 @@
                             
                             KeyUp="UserNameTxt_KeyUp"
                             Width="235"
+                           
                             HorizontalContentAlignment="Left"
-                            Opacity="0.5" Height="25" Margin="65,0,0,0"/>
+                            Opacity="0.5" Height="32" Margin="65,0,0,0"/>
                         
                         <TextBlock IsHitTestVisible="False" 
                                    Text="UserName" 
@@ -100,7 +101,7 @@
                             BorderThickness="0"
                             Width="235"
                             HorizontalContentAlignment="Left"
-                            Height="25" Margin="65,0,0,0"/>
+                            Height="32" Margin="65,0,0,0"/>
                         <TextBlock IsHitTestVisible="False" 
                                    Text="Password" 
                                    VerticalAlignment="Center" 

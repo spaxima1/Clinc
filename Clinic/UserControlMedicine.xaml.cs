@@ -35,15 +35,27 @@ namespace Clinic
             try
             {
                 var sum = database.sum_medicineSaleePrice(PhoneNumberTxt.Text, dataMeadisan[0].PrescribeDate).First();
-                SumMedicnetxt.Text = Convert.ToInt64(sum).ToString();
+                SumMedicnetxt.Text = Convert.ToInt64(sum).ToString("#,#");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               
             }
-            
 
 
+        }
+
+        private void PrintBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (PhoneNumberTxt.Text != "")
+            {
+                new Print(PhoneNumberTxt.Text).Show();
+            }
+            else
+            {
+                MessageBox.Show("لطفا شمار  همراه بیمار را والد کنید");
+                PhoneNumberTxt.Focus();
+            }
         }
     }
 }

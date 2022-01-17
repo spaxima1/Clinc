@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DataModelLayer;
 namespace Clinic
 {
     /// <summary>
@@ -33,29 +33,38 @@ namespace Clinic
         {
             DragMove();
         }
+        public int id;
+        ClinicDBEntities database = new ClinicDBEntities();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (UserNameTxt.Text == "a" && UserPasswordtxt.Password == "1")
+            try
             {
+                var clrek = database.find_Clerk(UserNameTxt.Text, UserPasswordtxt.Password).First();
+                id = clrek.ClerkID;
                 this.Close();
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("رمز یا یوز اشتباه است");
-                return;
+                MessageBox.Show("اطلاعات وارد شده درست نمی باشد لطفا دقت  کنید !!", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                UserNameTxt.Text = "";
+                UserPasswordtxt.Password = "";
+
             }
+            
+
+            
         }
 
         private void UserNameTxt_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Enter)
+            if (e.Key == System.Windows.Input.Key.Enter&&UserNameTxt.Text!="")
                 UserPasswordtxt.Focus();
         }
 
         private void UserPasswordtxt_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Enter)
+            if (e.Key == System.Windows.Input.Key.Enter&&UserPasswordtxt.Password!="")
                 Button_Click(Loginbtn, new RoutedEventArgs());
         }
     }

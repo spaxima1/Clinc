@@ -196,6 +196,13 @@
       <Parameter Name="phone" Mode="In" Type="String" />
       <Parameter Name="date_time" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="find_Clerk" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_Clerk_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="find_Clerk_byID" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_Clerk_byID_Result)">
+      <Parameter Name="clrckid" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="fn_dr_Result">
     <Property Type="Int32" Name="DoctorID" Nullable="false" />
@@ -240,5 +247,23 @@
     <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
     <Property Type="Int64" Name="MedicineSaleePrice" Nullable="false" />
     <Property Type="String" Name="PatientPhoneNumber" Nullable="false" MaxLength="12" />
+  </ComplexType>
+  <ComplexType Name="find_Clerk_Result">
+    <Property Type="Int32" Name="ClerkID" Nullable="false" />
+    <Property Type="String" Name="ClerkUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ClerkName" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="ClerkFamily" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="ClerkPassword" Nullable="false" MaxLength="128" />
+    <Property Type="DateTime" Name="ClerkStartDate" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ClerkEndDate" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="find_Clerk_byID_Result">
+    <Property Type="Int32" Name="ClerkID" Nullable="false" />
+    <Property Type="String" Name="ClerkUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ClerkName" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="ClerkFamily" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="ClerkPassword" Nullable="false" MaxLength="128" />
+    <Property Type="DateTime" Name="ClerkStartDate" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ClerkEndDate" Nullable="true" Precision="10" />
   </ComplexType>
 </Schema>

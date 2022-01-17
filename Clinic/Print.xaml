@@ -1,0 +1,118 @@
+﻿<Window x:Class="Clinic.Print"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinic"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Print" Height="800" Width="523.5" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen">
+    <ScrollViewer>
+        <Grid>
+            <Button x:Name="printbtn" Click="printbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
+                <materialDesign:PackIcon Kind="Printer"/>
+            </Button>
+            <Button x:Name="exitbtnprint"  Click="exitbtnprint_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20">
+                <materialDesign:PackIcon Kind="ExitToApp"/>
+            </Button>
+            <Grid x:Name="printMedicine">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="500"/>
+                    <RowDefinition Height="200"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft">
+                    <Image Source="image/logo.png" Width="90" Height="90"/>
+                    <TextBlock Text="کلینک درمانی" VerticalAlignment="Center" FontFamily="B yekan" FontSize="20" Margin="30" Foreground="#555555"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
+                    <Grid HorizontalAlignment="Stretch" FlowDirection="RightToLeft">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock x:Name="DatePrinttxt" Text="2022-01-12"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="نام بیمار :"/>
+                                <TextBlock x:Name="PrescibeNamePrinttxt" Text="علی محمدی " Margin="10 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="شماره نسخه :"/>
+                                <TextBlock Text="132576" Margin="10 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="نام دکتر :"/>
+                                <TextBlock x:Name="DrNamePrinttxt" Text="بهروز " Margin="10 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Border Margin="0 10" Padding="0 10" CornerRadius="8">
+                        
+                            <Border.Background>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                                    <GradientStop Color="#8be398" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="2" VerticalAlignment="Center"
+                                                    HorizontalAlignment="Right" 
+                                       x:Name="NameMedicinetxt" Text="اسم دارو"
+                                       Margin="20 0 "/>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       x:Name="countMedicinetxt" Text="تعداد "
+                                     />
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       x:Name="dateMedicnetxt" Text="تاریخ"
+                                     />
+                            </Grid>
+
+                    </Border>
+                    <StackPanel x:Name="Contentstac">
+                        
+                    </StackPanel>
+                   
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <Border Margin="20" CornerRadius="8" Padding="10">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#7be9f6" Offset="0.0"/>
+                                <GradientStop Color="#8be398" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel  Orientation="Horizontal"   FlowDirection="RightToLeft" >
+
+                            <TextBlock Text="جمع کل دارو :"/>
+                            <TextBlock x:Name="sumfactotxt" HorizontalAlignment="Left" Text="" Width="100" Margin="200 0 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Margin="20" CornerRadius="8" Width="300" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#ff91ab" Offset="0.0"/>
+                                <GradientStop Color="#f9a26f" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel  HorizontalAlignment="Center" >
+                            <TextBlock  Text="خوش آمدید"/>
+                        </StackPanel>
+                        
+                    </Border>
+                    
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>

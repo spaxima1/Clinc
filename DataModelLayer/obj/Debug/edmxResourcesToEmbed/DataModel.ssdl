@@ -166,6 +166,39 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="find_Clerk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ClerkID" Type="int" Nullable="false" />
+          <Property Name="ClerkUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClerkName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="ClerkFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="ClerkPassword" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClerkStartDate" Type="date" />
+          <Property Name="ClerkEndDate" Type="date" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="find_Clerk_byID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clrckid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ClerkID" Type="int" Nullable="false" />
+          <Property Name="ClerkUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClerkName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="ClerkFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="ClerkPassword" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClerkStartDate" Type="date" />
+          <Property Name="ClerkEndDate" Type="date" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <Function Name="find_prescibes_By_phonenumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="phone" Type="varchar" Mode="In" />
     <ReturnType>

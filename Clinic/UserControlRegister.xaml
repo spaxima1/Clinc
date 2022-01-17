@@ -20,6 +20,8 @@
             <StackPanel  Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Grid>
                     <TextBox
+                        Height="40"
+                        FlowDirection="RightToLeft"
                                 x:Name="UserNameTxt"                           
                                 Style="{StaticResource TextBoxRegistr}"
                                 KeyUp="UserNameTxt_KeyUp"
@@ -59,8 +61,10 @@
                         <ColumnDefinition Width="29*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox
+                        FlowDirection="RightToLeft"
                                 x:Name="UserFamilyTxt"
                                 KeyUp="UserFamilyTxt_KeyUp"
+                                Height="40"
                                 Style="{StaticResource TextBoxRegistr}" Grid.ColumnSpan="2" Margin="65,0,0,-0.2"
                         />
 
@@ -95,13 +99,13 @@
             <StackPanel  Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Grid>
                     <TextBox
-                                x:Name="NationalCodeTxt"    
+                                x:Name="PhonenumberTxt"    
                                 KeyUp="NationalCodeTxt_KeyUp"
                                 Style="{StaticResource TextBoxRegistr}"
                         />
 
                     <TextBlock IsHitTestVisible="False" 
-                                       Text="کد ملی              " 
+                                       Text="شماره همراه       " 
                                        VerticalAlignment="Center" 
                                        HorizontalAlignment="Center" 
                                        Margin="-40,0,0,0" Foreground="White"
@@ -113,7 +117,7 @@
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=NationalCodeTxt}" Value="">
+                                    <DataTrigger Binding="{Binding Text, ElementName=PhonenumberTxt}" Value="">
                                         <Setter Property="Visibility" Value="Visible"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -129,17 +133,13 @@
             </StackPanel>
             <StackPanel  Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Grid>
-
-                    <TextBox
-                                x:Name="DateBirthTxt"
-                                KeyUp="DateBirthTxt_KeyUp"
-                                Style="{StaticResource TextBoxRegistr}"/>
+                    <DatePicker x:Name="BirhDateclc" Margin="65,0,-0.6,-0.2" HorizontalAlignment="Center"   VerticalAlignment="Stretch" Width="250" />
 
                     <TextBlock IsHitTestVisible="False" 
                                        Text="تاریخ تولد            " 
                                        VerticalAlignment="Center" 
                                        HorizontalAlignment="Center" 
-                                       Margin="-32,0,0,0" Foreground="White"
+                                       Margin="-41,0,0,0" Foreground="White"
                                        FontFamily="IRANSans"
                                        FontSize="15" Opacity="0.5"
                                        
@@ -149,7 +149,7 @@
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=DateBirthTxt}" Value="">
+                                    <DataTrigger Binding="{Binding Text, ElementName=BirhDateclc}" Value="">
                                         <Setter Property="Visibility" Value="Visible"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -157,15 +157,54 @@
                         </TextBlock.Style>
                     </TextBlock>
                 </Grid>
-                <iconPacks:PackIconMaterial Kind="Calendar" 
-                                                        VerticalAlignment="Center" 
-                                                        HorizontalAlignment="Center" 
-                                                        Foreground="White"/>
+
 
             </StackPanel>
-            <Calendar Margin="0 30" Style="{StaticResource CalendarStylesRegister}"  >
+            <ComboBox  x:Name="GenderComBox" Width="250"  Margin="65,0,0,0">
+                <ComboBoxItem>
+                    <TextBlock Background="Transparent" Text="مرد"/>
 
-            </Calendar>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock   Background="Transparent" Text="زن"/>
+
+                </ComboBoxItem>
+            </ComboBox>
+            <Grid Margin="0 0 0 200">
+                <TextBox  x:Name="Addresstxt"
+                          FlowDirection="RightToLeft"
+                    Height="100"
+                    Width="250"
+                    TextWrapping="Wrap"
+                    AcceptsReturn="True"
+                          Margin="65,0,0,0"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto" Foreground="White"/>
+                <TextBlock IsHitTestVisible="False" 
+                                       Text="آدرس             " 
+                                       VerticalAlignment="Top" 
+                                       HorizontalAlignment="Right" 
+                                       Margin="0,0,240,0" Foreground="White"
+                                       FontFamily="IRANSans"
+                                       FontSize="15" Opacity="0.5"
+                                       
+                                       >
+
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=Addresstxt}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+
+
             <Button x:Name="RegistrationBtn"  Click="RegistrationBtn_Click" Width="200"  Height="50" Content="ثبت اطلاعات بیمار" Margin="60,10,60,200" Style="{StaticResource ButtonStyles}"/>
 
         </StackPanel>

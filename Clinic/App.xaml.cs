@@ -17,7 +17,10 @@ namespace Clinic
         {
             MainWindow w_n = new MainWindow();
             w_n.ShowDialog();
-            new Clerk().Show();
+
+           Clerk clerk_Win= new Clerk(w_n.id);
+            clerk_Win.ShowDialog();
+
         }
     }
 }

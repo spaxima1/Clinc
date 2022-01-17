@@ -41,3 +41,8 @@ D:\wpf\clinic\Clinic\Clinic\bin\Debug\EntityFramework.SqlServer.xml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlMedicine.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\UserControlMedicine.baml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\DataGridTheme.baml
+D:\wpf\clinic\Clinic\Clinic\bin\Debug\MaterialDesignColors.pdb
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\Print.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\Print.baml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\DataShowGrid.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\DataShowGrid.baml

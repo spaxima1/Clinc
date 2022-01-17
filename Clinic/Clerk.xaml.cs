@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
-
+using DataModelLayer;
 
 
 namespace Clinic
@@ -22,13 +22,15 @@ namespace Clinic
     /// </summary>
     public partial class Clerk : Window
     {
-        public Clerk()
+        public Clerk(int clerkId)
         {
             InitializeComponent();
+            var infclerk = database.find_Clerk_byID(clerkId).First();
+            clrckname.Text = infclerk.ClerkName + " " + infclerk.ClerkFamily;
 
 
-           
         }
+        ClinicDBEntities database = new ClinicDBEntities();
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -68,5 +68,29 @@ namespace DataModelLayer
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<long>>("[ClinicDBEntities].[sum_medicineSaleePrice](@phone, @date_time)", phoneParameter, date_timeParameter);
         }
+    
+        [DbFunction("ClinicDBEntities", "find_Clerk")]
+        public virtual IQueryable<find_Clerk_Result> find_Clerk(string username, string password)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<find_Clerk_Result>("[ClinicDBEntities].[find_Clerk](@username, @password)", usernameParameter, passwordParameter);
+        }
+    
+        [DbFunction("ClinicDBEntities", "find_Clerk_byID")]
+        public virtual IQueryable<find_Clerk_byID_Result> find_Clerk_byID(Nullable<int> clrckid)
+        {
+            var clrckidParameter = clrckid.HasValue ?
+                new ObjectParameter("clrckid", clrckid) :
+                new ObjectParameter("clrckid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<find_Clerk_byID_Result>("[ClinicDBEntities].[find_Clerk_byID](@clrckid)", clrckidParameter);
+        }
     }
 }

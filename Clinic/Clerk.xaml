@@ -40,22 +40,33 @@
         </Border>
         
         <!--item contorols -->
-        <StackPanel x:Name="Menu"  Grid.Row="1" Grid.Column="1" Background="Aquamarine" >
-                
-                
-            <Button  x:Name="PatientRegistration" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" Click="PatientRegistration_Click">
-                <StackPanel  Style="{StaticResource StackPanelHover}"  >
-                    <Label HorizontalContentAlignment="Center"   Content="ثبت نام بیمار"/>
-                </StackPanel>
-            </Button>
-            <Button  x:Name="MedixinePatientbtn" Click="MedixinePatientbtn_Click" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" >
+        <Grid  Grid.Row="1" Grid.Column="1" Background="Aquamarine" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="Menu"  Background="Aquamarine" >
+
+
+                <Button  x:Name="PatientRegistration" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" Click="PatientRegistration_Click">
+                    <StackPanel  Style="{StaticResource StackPanelHover}"  >
+                        <Label HorizontalContentAlignment="Center"   Content="ثبت نام بیمار"/>
+                    </StackPanel>
+                </Button>
+                <Button  x:Name="MedixinePatientbtn" Click="MedixinePatientbtn_Click" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" >
                     <StackPanel  Style="{StaticResource StackPanelHover}"  >
                         <Label HorizontalContentAlignment="Center"   Content="دارو های بیمار"/>
                     </StackPanel>
-            </Button>
-                
-            
-        </StackPanel>
+                </Button>
+
+
+            </StackPanel>
+            <StackPanel  Grid.Row="1" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                <TextBlock x:Name="clrckname" Width="250" FontSize="15" Margin="10 0" Text="" />
+
+            </StackPanel>
+        </Grid>
+       
             
  
         <StackPanel x:Name="StackPanelMain" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"/>

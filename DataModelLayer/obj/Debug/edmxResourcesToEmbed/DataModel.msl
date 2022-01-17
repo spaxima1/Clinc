@@ -124,5 +124,31 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sum_medicineSaleePrice" FunctionName="ClinicDBModel.Store.sum_medicineSaleePrice" />
+    <FunctionImportMapping FunctionImportName="find_Clerk" FunctionName="ClinicDBModel.Store.find_Clerk">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.find_Clerk_Result">
+          <ScalarProperty Name="ClerkID" ColumnName="ClerkID" />
+          <ScalarProperty Name="ClerkUserName" ColumnName="ClerkUserName" />
+          <ScalarProperty Name="ClerkName" ColumnName="ClerkName" />
+          <ScalarProperty Name="ClerkFamily" ColumnName="ClerkFamily" />
+          <ScalarProperty Name="ClerkPassword" ColumnName="ClerkPassword" />
+          <ScalarProperty Name="ClerkStartDate" ColumnName="ClerkStartDate" />
+          <ScalarProperty Name="ClerkEndDate" ColumnName="ClerkEndDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="find_Clerk_byID" FunctionName="ClinicDBModel.Store.find_Clerk_byID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClinicDBModel.find_Clerk_byID_Result">
+          <ScalarProperty Name="ClerkID" ColumnName="ClerkID" />
+          <ScalarProperty Name="ClerkUserName" ColumnName="ClerkUserName" />
+          <ScalarProperty Name="ClerkName" ColumnName="ClerkName" />
+          <ScalarProperty Name="ClerkFamily" ColumnName="ClerkFamily" />
+          <ScalarProperty Name="ClerkPassword" ColumnName="ClerkPassword" />
+          <ScalarProperty Name="ClerkStartDate" ColumnName="ClerkStartDate" />
+          <ScalarProperty Name="ClerkEndDate" ColumnName="ClerkEndDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
