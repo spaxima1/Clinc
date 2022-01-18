@@ -292,6 +292,39 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_TurnRatings' does not have a prima
       </CollectionType>
     </ReturnType>
   </Function>
+  <Function Name="find_TurnRatings_Patinent_acctive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DoctorID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Acctive" Type="bit" Nullable="false" />
+          <Property Name="TurnRatingDate" Type="smalldatetime" />
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="find_TurnRatings_Patinent_all_active" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Acctive" Type="bit" Nullable="false" />
+          <Property Name="TurnRatingDate" Type="smalldatetime" />
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <Function Name="fn_dr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ss" Type="varchar" Mode="In" />
     <ReturnType>

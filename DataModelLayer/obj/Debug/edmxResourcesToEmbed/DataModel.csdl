@@ -216,6 +216,10 @@
       <End Role="Patient" EntitySet="Patients" />
       <End Role="TurnRating" EntitySet="TurnRatings" />
     </AssociationSet>
+    <FunctionImport Name="find_TurnRatings_Patinent_acctive" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_TurnRatings_Patinent_acctive_Result)">
+      <Parameter Name="DoctorID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="find_TurnRatings_Patinent_all_active" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_TurnRatings_Patinent_all_active_Result)" />
   </EntityContainer>
   <ComplexType Name="fn_dr_Result">
     <Property Type="Int32" Name="DoctorID" Nullable="false" />
@@ -351,4 +355,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="find_TurnRatings_Patinent_acctive_Result">
+    <Property Type="Boolean" Name="Acctive" Nullable="false" />
+    <Property Type="DateTime" Name="TurnRatingDate" Nullable="true" Precision="16" />
+    <Property Type="Int32" Name="DoctorID" Nullable="false" />
+    <Property Type="Int32" Name="PatientID" Nullable="false" />
+    <Property Type="String" Name="PatientName" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="PatientFamily" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="DoctorFamily" Nullable="false" MaxLength="70" />
+  </ComplexType>
+  <ComplexType Name="find_TurnRatings_Patinent_all_active_Result">
+    <Property Type="Boolean" Name="Acctive" Nullable="false" />
+    <Property Type="DateTime" Name="TurnRatingDate" Nullable="true" Precision="16" />
+    <Property Type="Int32" Name="DoctorID" Nullable="false" />
+    <Property Type="Int32" Name="PatientID" Nullable="false" />
+    <Property Type="String" Name="PatientName" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="PatientFamily" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="DoctorFamily" Nullable="false" MaxLength="70" />
+  </ComplexType>
 </Schema>

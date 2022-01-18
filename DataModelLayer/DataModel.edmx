@@ -297,6 +297,39 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_TurnRatings' does not have a prima
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="find_TurnRatings_Patinent_acctive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DoctorID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Acctive" Type="bit" Nullable="false" />
+                <Property Name="TurnRatingDate" Type="smalldatetime" />
+                <Property Name="DoctorID" Type="int" Nullable="false" />
+                <Property Name="PatientID" Type="int" Nullable="false" />
+                <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="find_TurnRatings_Patinent_all_active" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Acctive" Type="bit" Nullable="false" />
+                <Property Name="TurnRatingDate" Type="smalldatetime" />
+                <Property Name="DoctorID" Type="int" Nullable="false" />
+                <Property Name="PatientID" Type="int" Nullable="false" />
+                <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+                <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="fn_dr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ss" Type="varchar" Mode="In" />
           <ReturnType>
@@ -624,6 +657,10 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_TurnRatings' does not have a prima
             <End Role="Patient" EntitySet="Patients" />
             <End Role="TurnRating" EntitySet="TurnRatings" />
           </AssociationSet>
+          <FunctionImport Name="find_TurnRatings_Patinent_acctive" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_TurnRatings_Patinent_acctive_Result)">
+            <Parameter Name="DoctorID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="find_TurnRatings_Patinent_all_active" IsComposable="true" ReturnType="Collection(ClinicDBModel.find_TurnRatings_Patinent_all_active_Result)" />
         </EntityContainer>
         <ComplexType Name="fn_dr_Result">
           <Property Type="Int32" Name="DoctorID" Nullable="false" />
@@ -759,6 +796,26 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_TurnRatings' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="find_TurnRatings_Patinent_acctive_Result">
+          <Property Type="Boolean" Name="Acctive" Nullable="false" />
+          <Property Type="DateTime" Name="TurnRatingDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="DoctorID" Nullable="false" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="String" Name="PatientName" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="PatientFamily" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorFamily" Nullable="false" MaxLength="70" />
+        </ComplexType>
+        <ComplexType Name="find_TurnRatings_Patinent_all_active_Result">
+          <Property Type="Boolean" Name="Acctive" Nullable="false" />
+          <Property Type="DateTime" Name="TurnRatingDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="DoctorID" Nullable="false" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="String" Name="PatientName" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="PatientFamily" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="DoctorFamily" Nullable="false" MaxLength="70" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -953,6 +1010,34 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_TurnRatings' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="find_TurnRatings_Patinent_acctive" FunctionName="ClinicDBModel.Store.find_TurnRatings_Patinent_acctive">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicDBModel.find_TurnRatings_Patinent_acctive_Result">
+                <ScalarProperty Name="Acctive" ColumnName="Acctive" />
+                <ScalarProperty Name="TurnRatingDate" ColumnName="TurnRatingDate" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="find_TurnRatings_Patinent_all_active" FunctionName="ClinicDBModel.Store.find_TurnRatings_Patinent_all_active">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicDBModel.find_TurnRatings_Patinent_all_active_Result">
+                <ScalarProperty Name="Acctive" ColumnName="Acctive" />
+                <ScalarProperty Name="TurnRatingDate" ColumnName="TurnRatingDate" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

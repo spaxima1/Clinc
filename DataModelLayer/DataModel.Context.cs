@@ -95,5 +95,21 @@ namespace DataModelLayer
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<find_Clerk_byID_Result>("[ClinicDBEntities].[find_Clerk_byID](@clrckid)", clrckidParameter);
         }
+    
+        [DbFunction("ClinicDBEntities", "find_TurnRatings_Patinent_acctive")]
+        public virtual IQueryable<find_TurnRatings_Patinent_acctive_Result> find_TurnRatings_Patinent_acctive(Nullable<int> doctorID)
+        {
+            var doctorIDParameter = doctorID.HasValue ?
+                new ObjectParameter("DoctorID", doctorID) :
+                new ObjectParameter("DoctorID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<find_TurnRatings_Patinent_acctive_Result>("[ClinicDBEntities].[find_TurnRatings_Patinent_acctive](@DoctorID)", doctorIDParameter);
+        }
+    
+        [DbFunction("ClinicDBEntities", "find_TurnRatings_Patinent_all_active")]
+        public virtual IQueryable<find_TurnRatings_Patinent_all_active_Result> find_TurnRatings_Patinent_all_active()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<find_TurnRatings_Patinent_all_active_Result>("[ClinicDBEntities].[find_TurnRatings_Patinent_all_active]()");
+        }
     }
 }

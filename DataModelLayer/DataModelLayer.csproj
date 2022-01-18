@@ -83,6 +83,12 @@
     <Compile Include="find_prescibes_By_phonenumber_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="find_TurnRatings_Patinent_acctive_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="find_TurnRatings_Patinent_all_active_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="fn_dr_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
