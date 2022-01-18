@@ -22,31 +22,50 @@ namespace Clinic
     {
         ClinicDBEntities database = new ClinicDBEntities();
 
-
+        List<InformationTemplate> informationTemplatesItem;
         public ShowPatientsInformation()
         {
             InitializeComponent();
             dgridPatients.Children.Clear();
             foreach (var item in database.Vw_Patients.ToList())
             {
-                var inf = new InformationTemplate(item.PatientName, item.PatientFamily, item.PatientPhoneNumber, item.Gender, item.PatientDateBirth);
+                var inf = new InformationTemplate(item.PatientName, item.PatientFamily, item.PatientPhoneNumber, item.Gender, item.PatientDateBirth,item.PatientID);
+                inf.Cursor = Searchbtn.Cursor;
+                inf.MouseDown += Inf_MouseDown;
                 dgridPatients.Children.Add(inf);
-
             }
+            informationTemplatesItem = dgridPatients.Children.OfType<InformationTemplate>().ToList();
+        }
+
+        private void Inf_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var pa =( InformationTemplate)sender;
+            new TurnRatingsWindow(pa.name,pa.family,pa.pID,pa.gender).Show();
         }
 
         private void Searchbtn_Click(object sender, RoutedEventArgs e)
         {
-            var data = database.Vw_Patients.Where(c => c.PatientName.Contains(UserNameTxt.Text)).ToList();
+            var data = informationTemplatesItem.Where(c => c.name.Contains(UserNameTxt.Text)).ToList();
+            dgridPatients.Children.Clear();
+
+            foreach (var item in data)
+            {  
+                dgridPatients.Children.Add(item);
+            }
+
+        }
+
+        private void PhoneNumberTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var data = database.Vw_Patients.Where(c => c.PatientPhoneNumber.Contains(PhoneNumberTxt.Text)).ToList();
             dgridPatients.Children.Clear();
 
             foreach (var item in data)
             {
-                var inf = new InformationTemplate(item.PatientName, item.PatientFamily, item.PatientPhoneNumber, item.Gender, item.PatientDateBirth);
+                var inf = new InformationTemplate(item.PatientName, item.PatientFamily, item.PatientPhoneNumber, item.Gender, item.PatientDateBirth,item.PatientID);
                 dgridPatients.Children.Add(inf);
-
+                inf.MouseDown += Inf_MouseDown;
             }
-
         }
     }
 }

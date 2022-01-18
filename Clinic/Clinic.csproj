@@ -78,6 +78,9 @@
     <Compile Include="DataShowGrid.xaml.cs">
       <DependentUpon>DataShowGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DoctorUserControl.xaml.cs">
+      <DependentUpon>DoctorUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InformationTemplate.xaml.cs">
       <DependentUpon>InformationTemplate.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,9 @@
       <DependentUpon>ShowPatientsInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="SubItem.cs" />
+    <Compile Include="TurnRatingsWindow.xaml.cs">
+      <DependentUpon>TurnRatingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlMedicine.xaml.cs">
       <DependentUpon>UserControlMedicine.xaml</DependentUpon>
     </Compile>
@@ -104,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DataShowGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowPatientsInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TurnRatingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

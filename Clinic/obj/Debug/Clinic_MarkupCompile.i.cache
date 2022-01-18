@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\wpf\clinic\Clinic\Clinic\App.xaml
-11-1601989148
+131976800372
 
-152028479820
+172029210977
 20381757673
-Clerk.xaml;DataGridTheme.xaml;DataShowGrid.xaml;InformationTemplate.xaml;MainWindow.xaml;ModernButtonTheme.xaml;Print.xaml;RegistrationFormTheme.xaml;ShowPatientsInformation.xaml;UserControlMedicine.xaml;UserControlRegister.xaml;
+Clerk.xaml;DataGridTheme.xaml;DataShowGrid.xaml;DoctorUserControl.xaml;InformationTemplate.xaml;MainWindow.xaml;ModernButtonTheme.xaml;Print.xaml;RegistrationFormTheme.xaml;ShowPatientsInformation.xaml;TurnRatingsWindow.xaml;UserControlMedicine.xaml;UserControlRegister.xaml;
 
 True
 

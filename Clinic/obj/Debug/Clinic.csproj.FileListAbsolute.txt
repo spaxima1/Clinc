@@ -50,3 +50,7 @@ D:\wpf\clinic\Clinic\Clinic\obj\Debug\InformationTemplate.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\ShowPatientsInformation.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\InformationTemplate.baml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\ShowPatientsInformation.baml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\DoctorUserControl.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\TurnRatingsWindow.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\DoctorUserControl.baml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\TurnRatingsWindow.baml

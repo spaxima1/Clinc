@@ -20,14 +20,23 @@ namespace Clinic
     /// </summary>
     public partial class InformationTemplate : UserControl
     {
-        public InformationTemplate(string name,string family,string phone,string gendr,DateTime? date)
+        public InformationTemplate(string name,string family,string phone,string gendr,DateTime? date,int id)
         {
             InitializeComponent();
-            Nametxt.Text = name;
-            Familytxt.Text = family;
-            PhoneNumbertxt.Text = phone;
-            PatientDateBirthtxt.Text = date.ToString();
-            gendertxt.Text = gendr;
+            Nametxt.Text=this.name = name;
+            Familytxt.Text=this.family = family;
+            PhoneNumbertxt.Text =this.phone= phone;
+            PatientDateBirthtxt.Text =this.Brithday= date.ToString();
+            gendertxt.Text = this.gender = gendr;
+            pID = id;
+            
         }
+        public int pID { get; set; }
+        public string name { get; set; }
+        public string family  { get; set; }
+        public string phone { get; set; }
+        public string  gender { get; set; }
+        public string Brithday { get; set; }
+
     }
 }

@@ -21,7 +21,7 @@
                         <GradientStop Color="#f99c9c" Offset="1"/>
                     </LinearGradientBrush>
                 </StackPanel.Background>
-                <Button x:Name="Searchbtn" Click="Searchbtn_Click"   >
+                <Button x:Name="Searchbtn" Click="Searchbtn_Click" Cursor="Hand"  >
                     <materialDesign:PackIcon Kind="Search"/>
                 </Button>
                 <Grid>
@@ -55,6 +55,48 @@
                                    Style="{StaticResource textforTextBoxplaceHolder}" Grid.RowSpan="2"
                                    >
 
+
+                    </TextBlock>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="111*"/>
+                        <RowDefinition Height="109*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox
+                            x:Name="PhoneNumberTxt"                           
+                            FontFamily="IRANSans"
+                            FontWeight="Light"
+                            FontSize="20"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Width="235"
+                            TextChanged="PhoneNumberTxt_TextChanged"
+                            HorizontalContentAlignment="Left"
+                            Opacity="0.5" Height="45" Margin="65,94,0,94" Grid.RowSpan="2"/>
+
+                    <TextBlock IsHitTestVisible="False" 
+                                   Text="شماره تلفن" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="72,98,164,97" Foreground="White"
+                                   FontFamily="IRANSans"
+                                   FontSize="15" Opacity="0.5"
+                                    Grid.RowSpan="2"
+                                   >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PhoneNumberTxt}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                  
 
                     </TextBlock>
                 </Grid>
