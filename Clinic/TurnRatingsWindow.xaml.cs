@@ -74,7 +74,7 @@ namespace Clinic
                 }); 
                 database.SaveChanges();
                 MessageBox.Show("با موفیقت انجام شد", "", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                this.Close();
             }
             else
             {

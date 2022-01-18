@@ -1,12 +1,11 @@
-﻿<UserControl x:Class="Clinic.UserControlMedicine"
+﻿<UserControl x:Class="Clinic.TurnRatingsListUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Clinic"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="800"
-             MinHeight="650" MinWidth="800" >
+             d:DesignHeight="650" d:DesignWidth="800">
     <Grid>
         <Border>
             <Border.Background>
@@ -16,7 +15,6 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
-                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
@@ -26,7 +24,7 @@
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <TextBox
-                            x:Name="PhoneNumberTxt"                           
+                            x:Name="Nametxt"                           
                             FontFamily="IRANSans"
                             FontWeight="Light"
                             FontSize="20"
@@ -63,74 +61,54 @@
 
                                 </TextBlock>
                             </Grid>
-                            <Button x:Name="SearchMedicinebtn" Click="SearchMedicinebtn_Click" Width="100" Height="32" Content="جست جو" Margin="20 0 0 0" Style="{StaticResource ButtonStyles}"/>
-
+                            <Button x:Name="SearchMedicinebtn" Click="SearchMedicinebtn_Click"  Width="100" Height="32" Content="جست جو" Margin="20 0 0 0" Style="{StaticResource ButtonStyles}"/>
                         </StackPanel>
                     </Border>
                 </Grid>
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                            <Border  Padding="10 5">
-                                <Border.Background>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="#7be9f6" Offset="0.0"/>
-                                        <GradientStop Color="#8be398" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft"
-                                             >
-                                    <TextBlock Text="جمع کل :" Margin="0 0 20 0"/>
-                                    <TextBlock x:Name="SumMedicnetxt" FlowDirection="LeftToRight" MinWidth="70" Text=""/>
-
-                                </StackPanel>
-                            </Border>
-                            <Button x:Name="PrintBtn"  Click="PrintBtn_Click" Width="100" Height="30" Content="چاپ" Margin="20 0 0 0" Style="{StaticResource ButtonStyles}"/>
-
-                        </StackPanel>
-                    </Grid>
-                    <DataGrid 
-                    x:Name="DataGrid_Medicine"
+                
+                <DataGrid 
+                    x:Name="DataGrid_TurnRatings"
                     IsReadOnly="True"
                     AutoGenerateColumns="False"
-                    
+                    Grid.Row="1"
                     Margin="10"
                     FlowDirection="RightToLeft" AlternationCount="1"
                     >
-                        <DataGrid.Effect>
-                            <DropShadowEffect/>
-                        </DataGrid.Effect>
+                    <DataGrid.Effect>
+                        <DropShadowEffect/>
+                    </DataGrid.Effect>
 
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="اسم دارو" 
-                                            Binding="{Binding MedicineName}"
-                                            MinWidth="250"
-                                        >
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="تعداد" 
-                                            Binding="{Binding MedicineCount}"
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="اسم بیمار" 
+                                            Binding="{Binding PatientName}"
                                             MinWidth="150"
                                         >
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="قیمت" 
-                                            Binding="{Binding MedicineSaleePrice}"
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="فامیل بیمار" 
+                                            Binding="{Binding PatientFamily}"
                                             MinWidth="150"
                                         >
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="تاریخ" 
-                                            Binding="{Binding PrescribeDate}"
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="اسم دکتر" 
+                                            Binding="{Binding DoctorName}"
+                                            MinWidth="150"
+                                        >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="فامیل دکتر" 
+                                            Binding="{Binding DoctorFamily}"
+                                            MinWidth="150"
+                                        >
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="تاریخ" 
+                                            Binding="{Binding TurnRatingDate}"
                                             MinWidth="500"
                                         >
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-                
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
+            
+
         </Border>
     </Grid>
 </UserControl>

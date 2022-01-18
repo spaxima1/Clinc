@@ -54,3 +54,5 @@ D:\wpf\clinic\Clinic\Clinic\obj\Debug\DoctorUserControl.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\TurnRatingsWindow.g.cs
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\DoctorUserControl.baml
 D:\wpf\clinic\Clinic\Clinic\obj\Debug\TurnRatingsWindow.baml
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\TurnRatingsListUserControl.g.cs
+D:\wpf\clinic\Clinic\Clinic\obj\Debug\TurnRatingsListUserControl.baml
