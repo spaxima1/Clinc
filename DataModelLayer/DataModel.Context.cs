@@ -35,6 +35,8 @@ namespace DataModelLayer
         public virtual DbSet<Prescribe> Prescribes { get; set; }
         public virtual DbSet<Vw_prescibes> Vw_prescibes { get; set; }
         public virtual DbSet<Vw_Patients> Vw_Patients { get; set; }
+        public virtual DbSet<TurnRating> TurnRatings { get; set; }
+        public virtual DbSet<Vw_TurnRatings> Vw_TurnRatings { get; set; }
     
         [DbFunction("ClinicDBEntities", "fn_dr")]
         public virtual IQueryable<fn_dr_Result> fn_dr(string ss)

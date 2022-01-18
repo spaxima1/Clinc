@@ -1,5 +1,5 @@
 use ClinicDB;
-
+select * from Vw_Patients
 
 create function find_Clerk( @username varchar(50),@password varchar(128))
 returns table 
@@ -11,3 +11,4 @@ create function find_Clerk_byID( @clrckid int)
 returns table 
 as 
 return (select * from Clerks where ClerkID=@clrckid)
+

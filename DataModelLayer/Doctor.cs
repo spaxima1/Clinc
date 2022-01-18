@@ -19,6 +19,7 @@ namespace DataModelLayer
         {
             this.DiseaseRegistrations = new HashSet<DiseaseRegistration>();
             this.Prescribes = new HashSet<Prescribe>();
+            this.TurnRatings = new HashSet<TurnRating>();
         }
     
         public int DoctorID { get; set; }
@@ -34,5 +35,7 @@ namespace DataModelLayer
         public virtual ICollection<DiseaseRegistration> DiseaseRegistrations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prescribe> Prescribes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TurnRating> TurnRatings { get; set; }
     }
 }

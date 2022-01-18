@@ -70,6 +70,16 @@
     <Property Name="PatientID" Type="int" />
     <Property Name="DoctorID" Type="int" />
   </EntityType>
+  <EntityType Name="TurnRatings">
+    <Key>
+      <PropertyRef Name="TurnRatingsid" />
+    </Key>
+    <Property Name="TurnRatingsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="TurnRatingDate" Type="smalldatetime" />
+    <Property Name="Acctive" Type="bit" Nullable="false" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'ClinicDB.dbo.Vw_Patients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Vw_Patients">
@@ -112,6 +122,27 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
     <Property Name="MedicineSaleePrice" Type="bigint" Nullable="false" />
     <Property Name="PatientPhoneNumber" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicDB.dbo.Vw_TurnRatings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vw_TurnRatings">
+    <Key>
+      <PropertyRef Name="Acctive" />
+      <PropertyRef Name="DoctorID" />
+      <PropertyRef Name="PatientID" />
+      <PropertyRef Name="PatientName" />
+      <PropertyRef Name="PatientFamily" />
+      <PropertyRef Name="DoctorName" />
+      <PropertyRef Name="DoctorFamily" />
+    </Key>
+    <Property Name="Acctive" Type="bit" Nullable="false" />
+    <Property Name="TurnRatingDate" Type="smalldatetime" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="PatientName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PatientFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="DoctorName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="DoctorFamily" Type="nvarchar" MaxLength="70" Nullable="false" />
   </EntityType>
   <Association Name="FK_ClerkID">
     <End Role="Clerks" Type="Self.Clerks" Multiplicity="0..1" />
@@ -181,6 +212,30 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
         <PropertyRef Name="PatientID" />
       </Principal>
       <Dependent Role="Prescribes">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TurnRatingsDoctorID">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+    <End Role="TurnRatings" Type="Self.TurnRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="TurnRatings">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TurnRatingsPatientID">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="TurnRatings" Type="Self.TurnRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="TurnRatings">
         <PropertyRef Name="PatientID" />
       </Dependent>
     </ReferentialConstraint>
@@ -272,6 +327,7 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Prescribes" EntityType="Self.Prescribes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TurnRatings" EntityType="Self.TurnRatings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vw_Patients" EntityType="Self.Vw_Patients" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Vw_Patients].[PatientName] AS [PatientName], 
@@ -298,6 +354,18 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     [Vw_prescibes].[PatientPhoneNumber] AS [PatientPhoneNumber]
     FROM [dbo].[Vw_prescibes] AS [Vw_prescibes]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="Vw_TurnRatings" EntityType="Self.Vw_TurnRatings" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vw_TurnRatings].[Acctive] AS [Acctive], 
+    [Vw_TurnRatings].[TurnRatingDate] AS [TurnRatingDate], 
+    [Vw_TurnRatings].[DoctorID] AS [DoctorID], 
+    [Vw_TurnRatings].[PatientID] AS [PatientID], 
+    [Vw_TurnRatings].[PatientName] AS [PatientName], 
+    [Vw_TurnRatings].[PatientFamily] AS [PatientFamily], 
+    [Vw_TurnRatings].[DoctorName] AS [DoctorName], 
+    [Vw_TurnRatings].[DoctorFamily] AS [DoctorFamily]
+    FROM [dbo].[Vw_TurnRatings] AS [Vw_TurnRatings]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_ClerkID" Association="Self.FK_ClerkID">
       <End Role="Clerks" EntitySet="Clerks" />
       <End Role="Patients" EntitySet="Patients" />
@@ -321,6 +389,14 @@ warning 6002: The table/view 'ClinicDB.dbo.Vw_prescibes' does not have a primary
     <AssociationSet Name="FK_PrescribePatientID" Association="Self.FK_PrescribePatientID">
       <End Role="Patients" EntitySet="Patients" />
       <End Role="Prescribes" EntitySet="Prescribes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TurnRatingsDoctorID" Association="Self.FK_TurnRatingsDoctorID">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="TurnRatings" EntitySet="TurnRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TurnRatingsPatientID" Association="Self.FK_TurnRatingsPatientID">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="TurnRatings" EntitySet="TurnRatings" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

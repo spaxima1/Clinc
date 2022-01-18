@@ -39,6 +39,7 @@
     <Property Name="DoctorSpecialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DiseaseRegistrations" Relationship="Self.FK_DiseaseDoctorID" FromRole="Doctors" ToRole="DiseaseRegistration" />
     <NavigationProperty Name="Prescribes" Relationship="Self.FK_PrescribeDoctorID" FromRole="Doctors" ToRole="Prescribes" />
+    <NavigationProperty Name="TurnRatings" Relationship="ClinicDBModel.FK_TurnRatingsDoctorID" FromRole="Doctor" ToRole="TurnRating" />
   </EntityType>
   <EntityType Name="Medicine">
     <Key>
@@ -67,6 +68,7 @@
     <NavigationProperty Name="Clerk" Relationship="Self.FK_ClerkID" FromRole="Patients" ToRole="Clerks" />
     <NavigationProperty Name="DiseaseRegistrations" Relationship="Self.FK_DiseasePatientID" FromRole="Patients" ToRole="DiseaseRegistration" />
     <NavigationProperty Name="Prescribes" Relationship="Self.FK_PrescribePatientID" FromRole="Patients" ToRole="Prescribes" />
+    <NavigationProperty Name="TurnRatings" Relationship="ClinicDBModel.FK_TurnRatingsPatientID" FromRole="Patient" ToRole="TurnRating" />
   </EntityType>
   <EntityType Name="Prescribe">
     <Key>
@@ -204,6 +206,16 @@
       <Parameter Name="clrckid" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="Vw_Patients" EntityType="ClinicDBModel.Vw_Patients" />
+    <EntitySet Name="TurnRatings" EntityType="ClinicDBModel.TurnRating" />
+    <EntitySet Name="Vw_TurnRatings" EntityType="ClinicDBModel.Vw_TurnRatings" />
+    <AssociationSet Name="FK_TurnRatingsDoctorID" Association="ClinicDBModel.FK_TurnRatingsDoctorID">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="TurnRating" EntitySet="TurnRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TurnRatingsPatientID" Association="ClinicDBModel.FK_TurnRatingsPatientID">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="TurnRating" EntitySet="TurnRatings" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="fn_dr_Result">
     <Property Type="Int32" Name="DoctorID" Nullable="false" />
@@ -284,4 +296,59 @@
     <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="TurnRating">
+    <Key>
+      <PropertyRef Name="TurnRatingsid" />
+    </Key>
+    <Property Name="TurnRatingsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="DoctorID" Type="Int32" Nullable="false" />
+    <Property Name="TurnRatingDate" Type="DateTime" Precision="0" />
+    <Property Name="Acctive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Doctor" Relationship="ClinicDBModel.FK_TurnRatingsDoctorID" FromRole="TurnRating" ToRole="Doctor" />
+    <NavigationProperty Name="Patient" Relationship="ClinicDBModel.FK_TurnRatingsPatientID" FromRole="TurnRating" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Vw_TurnRatings">
+    <Key>
+      <PropertyRef Name="Acctive" />
+      <PropertyRef Name="DoctorID" />
+      <PropertyRef Name="PatientID" />
+      <PropertyRef Name="PatientName" />
+      <PropertyRef Name="PatientFamily" />
+      <PropertyRef Name="DoctorName" />
+      <PropertyRef Name="DoctorFamily" />
+    </Key>
+    <Property Name="Acctive" Type="Boolean" Nullable="false" />
+    <Property Name="TurnRatingDate" Type="DateTime" Precision="0" />
+    <Property Name="DoctorID" Type="Int32" Nullable="false" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="PatientName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="PatientFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="DoctorName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="DoctorFamily" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_TurnRatingsDoctorID">
+    <End Type="ClinicDBModel.Doctor" Role="Doctor" Multiplicity="1" />
+    <End Type="ClinicDBModel.TurnRating" Role="TurnRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="TurnRating">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TurnRatingsPatientID">
+    <End Type="ClinicDBModel.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="ClinicDBModel.TurnRating" Role="TurnRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="TurnRating">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -17,8 +17,12 @@
         <AssociationConnector Association="ClinicDBModel.FK_PrescribeDoctorID" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicDBModel.FK_PrescribeMedicineID" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicDBModel.FK_PrescribePatientID" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ClinicDBModel.Vw_prescibes" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicDBModel.Vw_prescibes" Width="1.5" PointX="12.625" PointY="0.875" />
         <EntityTypeShape EntityType="ClinicDBModel.Vw_Patients" Width="1.5" PointX="10.375" PointY="0.5" />
+        <EntityTypeShape EntityType="ClinicDBModel.TurnRating" Width="1.5" PointX="1.125" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicDBModel.Vw_TurnRatings" Width="1.5" PointX="11.875" PointY="4.5" />
+        <AssociationConnector Association="ClinicDBModel.FK_TurnRatingsDoctorID" />
+        <AssociationConnector Association="ClinicDBModel.FK_TurnRatingsPatientID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

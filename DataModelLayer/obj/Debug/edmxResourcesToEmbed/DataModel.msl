@@ -164,5 +164,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TurnRatings">
+      <EntityTypeMapping TypeName="ClinicDBModel.TurnRating">
+        <MappingFragment StoreEntitySet="TurnRatings">
+          <ScalarProperty Name="Acctive" ColumnName="Acctive" />
+          <ScalarProperty Name="TurnRatingDate" ColumnName="TurnRatingDate" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="TurnRatingsid" ColumnName="TurnRatingsid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vw_TurnRatings">
+      <EntityTypeMapping TypeName="ClinicDBModel.Vw_TurnRatings">
+        <MappingFragment StoreEntitySet="Vw_TurnRatings">
+          <ScalarProperty Name="DoctorFamily" ColumnName="DoctorFamily" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="PatientFamily" ColumnName="PatientFamily" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="TurnRatingDate" ColumnName="TurnRatingDate" />
+          <ScalarProperty Name="Acctive" ColumnName="Acctive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
