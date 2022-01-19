@@ -22,7 +22,15 @@
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
-        <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Grid.ColumnSpan="2" Height="40" Background="#0086dc">
+        <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Grid.ColumnSpan="2" Height="40">
+            
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#31d3b5" Offset="0.0"/>
+                    <GradientStop Color="#025344" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -40,12 +48,19 @@
         </Border>
         
         <!--item contorols -->
-        <Grid  Grid.Row="1" Grid.Column="1" Background="Aquamarine" >
+        <Grid  Grid.Row="1" Grid.Column="1"  >
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#025344" Offset="0.0"/>
+                    <GradientStop Color="#37fdd9" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel x:Name="Menu"  Background="Aquamarine" >
+            <StackPanel x:Name="Menu"  >
 
 
                 <Button  x:Name="PatientRegistration" Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" Click="PatientRegistration_Click">
@@ -63,7 +78,11 @@
                         <Label HorizontalContentAlignment="Center"   Content=  "نمایش  بیماران"/>
                     </StackPanel>
                 </Button>
-
+                <Button  x:Name="TurnRatingsbtn" Click="TurnRatingsbtn_Click"  Grid.Column="1" Margin="10 5" Style="{StaticResource ImageButtonStyle}" >
+                    <StackPanel  Style="{StaticResource StackPanelHover}"  >
+                        <Label HorizontalContentAlignment="Center"   Content=  "بیمارن در نوبت"/>
+                    </StackPanel>
+                </Button>
 
 
             </StackPanel>

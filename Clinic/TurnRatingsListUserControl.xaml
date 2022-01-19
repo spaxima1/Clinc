@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Clinic"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="800"
+             MinHeight="650" MinWidth="800">
     <Grid>
         <Border>
             <Border.Background>
@@ -32,17 +33,17 @@
                             Foreground="White"
                             Background="Transparent"
                             BorderThickness="0"
-                            
+                           FlowDirection="RightToLeft"
                             
                             Width="235"
                             HorizontalContentAlignment="Left"
                             Opacity="0.5" Height="32" Margin="65,0,0,0"/>
 
                                 <TextBlock IsHitTestVisible="False" 
-                                   Text="شماره موبایل" 
+                                   Text="نام دکتر" 
                                    VerticalAlignment="Center" 
                                    HorizontalAlignment="Center" 
-                                   Margin="-80,0,0,0" Foreground="White"
+                                   Margin="230,0,0,0" Foreground="White"
                                    FontFamily="IRANSans"
                                    FontSize="15" Opacity="0.5"
                                   
@@ -51,7 +52,7 @@
                                         <Style TargetType="{x:Type TextBlock}">
                                             <Setter Property="Visibility" Value="Collapsed"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Text, ElementName=PhoneNumberTxt}" Value="">
+                                                <DataTrigger Binding="{Binding Text, ElementName=Nametxt}" Value="">
                                                     <Setter Property="Visibility" Value="Visible"/>
                                                 </DataTrigger>
                                             </Style.Triggers>

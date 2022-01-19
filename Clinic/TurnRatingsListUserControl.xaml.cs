@@ -29,7 +29,7 @@ namespace Clinic
 
         private void SearchMedicinebtn_Click(object sender, RoutedEventArgs e)
         {
-            DataGrid_TurnRatings.ItemsSource = database.find_TurnRatings_Patinent_all_active().Where(c=>c.PatientName==Nametxt.Text).ToList();
+            DataGrid_TurnRatings.ItemsSource = database.find_TurnRatings_Patinent_all_active().Where(c=>c.DoctorFamily==Nametxt.Text).ToList();
 
         }
     }

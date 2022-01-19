@@ -73,5 +73,12 @@ namespace Clinic
 
             StackPanelMain.Children.Add(new ShowPatientsInformation());
         }
+
+        private void TurnRatingsbtn_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanelMain.Children.Clear();
+
+            StackPanelMain.Children.Add(new TurnRatingsListUserControl());
+        }
     }
 }
