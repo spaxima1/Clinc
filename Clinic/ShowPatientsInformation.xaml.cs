@@ -57,14 +57,12 @@ namespace Clinic
 
         private void PhoneNumberTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var data = database.Vw_Patients.Where(c => c.PatientPhoneNumber.Contains(PhoneNumberTxt.Text)).ToList();
+            var data = informationTemplatesItem.Where(c => c.phone.Contains(PhoneNumberTxt.Text)).ToList();
             dgridPatients.Children.Clear();
 
             foreach (var item in data)
             {
-                var inf = new InformationTemplate(item.PatientName, item.PatientFamily, item.PatientPhoneNumber, item.Gender, item.PatientDateBirth,item.PatientID);
-                dgridPatients.Children.Add(inf);
-                inf.MouseDown += Inf_MouseDown;
+                dgridPatients.Children.Add(item);
             }
         }
     }

@@ -49,11 +49,12 @@ namespace Clinic
                 MessageBox.Show("اطلاعات وارد شده درست نمی باشد لطفا دقت  کنید !!", "", MessageBoxButton.OK, MessageBoxImage.Warning);
                 UserNameTxt.Text = "";
                 UserPasswordtxt.Password = "";
+                UserNameTxt.Focus();
 
             }
-            
 
-            
+
+
         }
 
         private void UserNameTxt_KeyUp(object sender, KeyEventArgs e)
@@ -66,6 +67,12 @@ namespace Clinic
         {
             if (e.Key == System.Windows.Input.Key.Enter&&UserPasswordtxt.Password!="")
                 Button_Click(Loginbtn, new RoutedEventArgs());
+        }
+
+        private void Exitbtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(0);
+
         }
     }
 }
